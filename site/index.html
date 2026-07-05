@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Criterion Tracker</title>
+<style>
+  :root {
+    --bg: #101014; --panel: #1a1a21; --panel2: #22222b; --text: #e8e6e3;
+    --muted: #9a97a0; --accent: #e4b34a; --green: #6fbf73; --border: #2e2e3a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 24px 20px 12px; max-width: 1100px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: .5px; }
+  h1 span { color: var(--accent); }
+  .sub { color: var(--muted); font-size: 13px; }
+  .bar { max-width: 1100px; margin: 12px auto; padding: 0 20px;
+         display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  input[type=search], select {
+    background: var(--panel); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 12px; font-size: 14px; }
+  input[type=search] { flex: 1; min-width: 220px; }
+  button { background: var(--panel2); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  .progress { max-width: 1100px; margin: 0 auto 8px; padding: 0 20px;
+              font-size: 13px; color: var(--muted); }
+  .progress .pbar { height: 6px; background: var(--panel); border-radius: 3px;
+                    margin-top: 6px; overflow: hidden; }
+  .progress .pfill { height: 100%; background: var(--accent); width: 0; }
+  #list { max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; }
+  .film { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+          margin-bottom: 8px; overflow: hidden; }
+  .film.watched { border-left: 3px solid var(--green); }
+  .row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; cursor: pointer; }
+  .rank { color: var(--accent); font-weight: 700; min-width: 44px; text-align: right;
+          font-variant-numeric: tabular-nums; }
+  .info { flex: 1; min-width: 0; }
+  .title { font-weight: 600; }
+  .meta { color: var(--muted); font-size: 12.5px; }
+  .imdb { color: var(--muted); font-size: 13px; min-width: 90px; text-align: right;
+          font-variant-numeric: tabular-nums; }
+  .imdb b { color: var(--text); }
+  .check { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--muted);
+           flex: none; display: flex; align-items: center; justify-content: center;
+           font-size: 14px; color: transparent; }
+  .watched .check { background: var(--green); border-color: var(--green); color: #10241a; }
+  .detail { display: none; padding: 12px 14px 16px; border-top: 1px solid var(--border);
+            background: var(--panel2); }
+  .film.open .detail { display: block; }
+  .detail .links a { color: var(--accent); text-decoration: none; margin-right: 16px; font-size: 13px; }
+  .stars { margin: 10px 0 6px; user-select: none; }
+  .stars span { font-size: 22px; cursor: pointer; color: #4a4a58; }
+  .stars span.on { color: var(--accent); }
+  .stars .clear { font-size: 12px; color: var(--muted); margin-left: 10px; cursor: pointer; }
+  textarea { width: 100%; min-height: 90px; background: var(--panel); color: var(--text);
+             border: 1px solid var(--border); border-radius: 8px; padding: 10px;
+             font: 14px/1.5 inherit; resize: vertical; }
+  .wdate { margin: 8px 0; font-size: 13px; color: var(--muted); }
+  .wdate input { background: var(--panel); color: var(--text); border: 1px solid var(--border);
+                 border-radius: 6px; padding: 4px 8px; }
+  .saved { font-size: 12px; color: var(--green); margin-left: 8px; opacity: 0;
+           transition: opacity .3s; }
+  .saved.show { opacity: 1; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 50px; }
+</style>
+</head>
+<body>
+<header>
+  <h1><span>Criterion</span> Tracker</h1>
+  <div class="sub">Every release, ranked by IMDb weighted score — watch, rate, review, then export to Letterboxd.</div>
+</header>
+
+<div class="progress"><span id="pcount"></span><div class="pbar"><div class="pfill" id="pfill"></div></div></div>
+
+<div class="bar">
+  <input type="search" id="q" placeholder="Search title / director / country…">
+  <select id="fwatch">
+    <option value="all">All films</option>
+    <option value="unwatched">Unwatched</option>
+    <option value="watched">Watched</option>
+    <option value="reviewed">Reviewed</option>
+  </select>
+  <select id="fdecade"><option value="all">All decades</option></select>
+  <button id="exportLb">Export Letterboxd CSV</button>
+  <button id="exportJson">Backup progress</button>
+  <button id="importJson">Restore</button>
+  <input type="file" id="importFile" accept=".json" hidden>
+</div>
+
+<div id="list"></div>
+<footer>Data: criterion.com + IMDb datasets · progress is stored in this browser — use Backup to keep a copy</footer>
+
+<script>
+const LS_KEY = "criterion-tracker-v1";
+let films = [], state = {};
+
+const load = () => {
+  try { state = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { state = {}; }
+  // migrate v0 keys ("s<spine>") to spine+year keys (spine 88 is shared by two films)
+  let dirty = false;
+  for (const k of Object.keys(state)) {
+    if (!/^s\d+$/.test(k)) continue;
+    const f = films.find(x => "s" + x.spine === k);
+    if (f) { state[keyOf(f)] = state[k]; dirty = true; }
+    delete state[k];
+  }
+  if (dirty) save();
+};
+const save = () => localStorage.setItem(LS_KEY, JSON.stringify(state));
+const keyOf = f => f.spine != null ? "s" + f.spine + "y" + (f.year || "") : "t" + f.title + "|" + f.year;
+const st = f => state[keyOf(f)] || {};
+const setSt = (f, patch) => { state[keyOf(f)] = { ...st(f), ...patch }; save(); updateProgress(); };
+
+fetch("films.json").then(r => r.json()).then(data => {
+  films = data;
+  const decades = [...new Set(films.map(f => f.year && Math.floor(f.year / 10) * 10).filter(Boolean))].sort();
+  const sel = document.getElementById("fdecade");
+  decades.forEach(d => sel.insertAdjacentHTML("beforeend", `<option value="${d}">${d}s</option>`));
+  load(); render(); updateProgress();
+});
+
+function esc(s) { return (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+
+function lbUrl(f) { return "https://letterboxd.com/search/films/" + encodeURIComponent(f.title + " " + (f.year || "")) + "/"; }
+
+function render() {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const fw = document.getElementById("fwatch").value;
+  const fd = document.getElementById("fdecade").value;
+  const list = document.getElementById("list");
+  const frag = [];
+  for (const f of films) {
+    const s = st(f);
+    if (q && !(f.title + " " + f.director + " " + f.country).toLowerCase().includes(q)) continue;
+    if (fw === "watched" && !s.watched) continue;
+    if (fw === "unwatched" && s.watched) continue;
+    if (fw === "reviewed" && !(s.review && s.review.trim())) continue;
+    if (fd !== "all" && (!f.year || Math.floor(f.year / 10) * 10 !== +fd)) continue;
+    frag.push(filmHtml(f, s));
+    if (frag.length >= 2000) break;
+  }
+  list.innerHTML = frag.join("");
+}
+
+function filmHtml(f, s) {
+  const k = esc(keyOf(f));
+  const imdb = f.imdb_rating ? `<b>${f.imdb_rating.toFixed(1)}</b> ★<br><span style="font-size:11px">${f.imdb_votes.toLocaleString()} votes</span>` : `<span style="font-size:12px">unrated</span>`;
+  const my = s.rating ? ` · you: ${"★".repeat(Math.floor(s.rating))}${s.rating % 1 ? "½" : ""}` : "";
+  return `<div class="film ${s.watched ? "watched" : ""}" data-k="${k}">
+    <div class="row" onclick="toggleOpen(this.parentNode)">
+      <div class="rank">#${f.rank}</div>
+      <div class="check" onclick="event.stopPropagation(); toggleWatched('${k}')">✓</div>
+      <div class="info">
+        <div class="title">${esc(f.title)} <span class="meta">(${f.year || "?"})</span></div>
+        <div class="meta">${esc(f.director)} · ${esc(f.country)}${f.spine != null ? " · spine #" + f.spine : ""}${my}</div>
+      </div>
+      <div class="imdb">${imdb}</div>
+    </div>
+    <div class="detail">
+      <div class="links">
+        <a href="${lbUrl(f)}" target="_blank">Letterboxd ↗</a>
+        <a href="${esc(f.url)}" target="_blank">Criterion ↗</a>
+        ${f.imdb_id ? `<a href="https://www.imdb.com/title/${f.imdb_id}/" target="_blank">IMDb ↗</a>` : ""}
+      </div>
+      <div class="stars" data-k="${k}">${[1,2,3,4,5].map(i => `<span data-v="${i}" class="${s.rating >= i ? "on" : ""}" onclick="setRating('${k}', ${i})">★</span>`).join("")}<span class="clear" onclick="setRating('${k}', 0)">clear</span></div>
+      <div class="wdate">Watched on <input type="date" value="${esc(s.date || "")}" onchange="setDate('${k}', this.value)"></div>
+      <textarea placeholder="Your review…" onblur="setReview('${k}', this.value, this)">${esc(s.review || "")}</textarea>
+      <span class="saved">saved ✓</span>
+    </div>
+  </div>`;
+}
+
+const byKey = k => films.find(f => keyOf(f) === k);
+
+function toggleOpen(el) { el.classList.toggle("open"); }
+function toggleWatched(k) {
+  const f = byKey(k), s = st(f);
+  setSt(f, { watched: !s.watched, date: !s.watched && !s.date ? new Date().toISOString().slice(0, 10) : s.date });
+  render();
+}
+function setRating(k, v) {
+  const f = byKey(k);
+  setSt(f, { rating: v || undefined, watched: v ? true : st(f).watched });
+  render();
+  document.querySelector(`.film[data-k="${CSS.escape(k)}"]`)?.classList.add("open");
+}
+function setDate(k, v) { setSt(byKey(k), { date: v }); }
+function setReview(k, v, ta) {
+  setSt(byKey(k), { review: v });
+  const badge = ta.parentNode.querySelector(".saved");
+  badge.classList.add("show"); setTimeout(() => badge.classList.remove("show"), 1200);
+}
+
+function updateProgress() {
+  const watched = films.filter(f => st(f).watched).length;
+  const reviewed = films.filter(f => (st(f).review || "").trim()).length;
+  document.getElementById("pcount").textContent =
+    `${watched} / ${films.length} watched · ${reviewed} reviewed`;
+  document.getElementById("pfill").style.width = films.length ? (100 * watched / films.length) + "%" : 0;
+}
+
+document.getElementById("q").addEventListener("input", render);
+document.getElementById("fwatch").addEventListener("change", render);
+document.getElementById("fdecade").addEventListener("change", render);
+
+// Letterboxd import format: https://letterboxd.com/about/importing-data/
+document.getElementById("exportLb").onclick = () => {
+  const rows = [["Title", "Year", "Rating", "WatchedDate", "Review"]];
+  for (const f of films) {
+    const s = st(f);
+    if (!s.watched) continue;
+    rows.push([f.title, f.year || "", s.rating || "", s.date || "", s.review || ""]);
+  }
+  if (rows.length === 1) return alert("Nothing watched yet — nothing to export.");
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\r\n");
+  download("letterboxd-import.csv", csv, "text/csv");
+};
+document.getElementById("exportJson").onclick = () =>
+  download("criterion-progress.json", JSON.stringify(state, null, 1), "application/json");
+document.getElementById("importJson").onclick = () => document.getElementById("importFile").click();
+document.getElementById("importFile").onchange = e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  file.text().then(t => {
+    try { state = { ...state, ...JSON.parse(t) }; save(); render(); updateProgress(); }
+    catch { alert("Not a valid progress file."); }
+  });
+};
+function download(name, content, type) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([content], { type }));
+  a.download = name; a.click(); URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
