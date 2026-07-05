@@ -27,7 +27,14 @@ for href, body in rows:
     spine = cell(body, "spine")
     year = cell(body, "year")
     # strip wayback prefix from the film URL
-    url = re.sub(r"^https?://web\.archive\.org/web/\d+/", "", href)
+    url = re.sub(r"^https?://web\.archive\.org/web/\d+(?:im_)?/", "", href)
+    # box-art image: strip wayback prefix and the size suffix; the S3 bucket
+    # serves _thumbnail/_small/_medium/_large variants of the same base name
+    img = None
+    m = re.search(r'<img src="([^"]+)"', body)
+    if m:
+        img = re.sub(r"^https?://web\.archive\.org/web/\d+(?:im_)?/", "", m.group(1))
+        img = re.sub(r"_(thumbnail|small|medium|large)\.jpg$", "", img)
     films.append(
         {
             "spine": int(spine) if spine.isdigit() else None,
@@ -36,6 +43,7 @@ for href, body in rows:
             "country": cell(body, "country").replace(" ,", ","),
             "year": int(year) if year.isdigit() else None,
             "url": url,
+            "img": img,
         }
     )
 

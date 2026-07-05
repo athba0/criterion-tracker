@@ -17,24 +17,30 @@
   h1 span { color: var(--accent); }
   .sub { color: var(--muted); font-size: 13px; }
   .bar { max-width: 1100px; margin: 12px auto; padding: 0 20px;
-         display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+         display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
   input[type=search], select {
     background: var(--panel); color: var(--text); border: 1px solid var(--border);
     border-radius: 8px; padding: 8px 12px; font-size: 14px; }
-  input[type=search] { flex: 1; min-width: 220px; }
+  input[type=search] { flex: 1; min-width: 200px; }
   button { background: var(--panel2); color: var(--text); border: 1px solid var(--border);
     border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
   button:hover { border-color: var(--accent); }
+  button.gold { background: var(--accent); color: #201a08; border-color: var(--accent); font-weight: 600; }
   .progress { max-width: 1100px; margin: 0 auto 8px; padding: 0 20px;
               font-size: 13px; color: var(--muted); }
   .progress .pbar { height: 6px; background: var(--panel); border-radius: 3px;
                     margin-top: 6px; overflow: hidden; }
   .progress .pfill { height: 100%; background: var(--accent); width: 0; }
   #list { max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; }
+
+  /* list view */
   .film { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
-          margin-bottom: 8px; overflow: hidden; }
+          margin-bottom: 8px; display: flex; align-items: center; gap: 12px;
+          padding: 8px 14px 8px 8px; cursor: pointer; }
+  .film:hover { border-color: #4a4a58; }
   .film.watched { border-left: 3px solid var(--green); }
-  .row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; cursor: pointer; }
+  .poster { width: 46px; height: 62px; object-fit: cover; border-radius: 5px;
+            background: var(--panel2); flex: none; }
   .rank { color: var(--accent); font-weight: 700; min-width: 44px; text-align: right;
           font-variant-numeric: tabular-nums; }
   .info { flex: 1; min-width: 0; }
@@ -47,24 +53,72 @@
            flex: none; display: flex; align-items: center; justify-content: center;
            font-size: 14px; color: transparent; }
   .watched .check { background: var(--green); border-color: var(--green); color: #10241a; }
-  .detail { display: none; padding: 12px 14px 16px; border-top: 1px solid var(--border);
-            background: var(--panel2); }
-  .film.open .detail { display: block; }
-  .detail .links a { color: var(--accent); text-decoration: none; margin-right: 16px; font-size: 13px; }
-  .stars { margin: 10px 0 6px; user-select: none; }
-  .stars span { font-size: 22px; cursor: pointer; color: #4a4a58; }
-  .stars span.on { color: var(--accent); }
+
+  /* grid view */
+  #list.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+               gap: 14px; }
+  #list.grid .film { flex-direction: column; padding: 0; gap: 0; overflow: hidden;
+                     align-items: stretch; border-left-width: 1px; }
+  #list.grid .film.watched { border-color: var(--green); }
+  #list.grid .poster { width: 100%; height: auto; aspect-ratio: 306/380; border-radius: 0; }
+  #list.grid .gcap { padding: 7px 9px; font-size: 12px; line-height: 1.35; }
+  #list.grid .gcap .title { font-size: 12.5px; white-space: nowrap; overflow: hidden;
+                            text-overflow: ellipsis; display: block; }
+  #list.grid .rank, #list.grid .imdb, #list.grid .info, #list.grid .check { display: none; }
+  #list.grid .gbadge { position: absolute; top: 6px; left: 6px; background: rgba(16,16,20,.85);
+                       color: var(--accent); font-size: 11px; font-weight: 700;
+                       padding: 2px 6px; border-radius: 5px; }
+  #list.grid .gdone { position: absolute; top: 6px; right: 6px; background: var(--green);
+                      color: #10241a; font-size: 12px; padding: 1px 6px; border-radius: 5px; }
+  #list.grid .pwrap { position: relative; }
+  .gcap, .gbadge, .gdone, .pwrap { display: none; }
+  #list.grid .gcap, #list.grid .pwrap { display: block; }
+  #list.grid .gbadge, #list.grid .film.watched .gdone { display: block; }
+  #list.grid > .film > .poster { display: none; }
+
+  /* detail modal */
+  #overlay { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: none;
+             z-index: 10; overflow-y: auto; padding: 4vh 16px; }
+  #overlay.show { display: block; }
+  #modal { max-width: 720px; margin: 0 auto; background: var(--panel);
+           border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .mhead { display: flex; gap: 18px; padding: 18px; }
+  .mposter { width: 150px; border-radius: 8px; flex: none; align-self: flex-start; }
+  .mtitle { font-size: 21px; font-weight: 700; margin: 2px 0 2px; }
+  .mmeta { color: var(--muted); font-size: 13.5px; margin-bottom: 8px; }
+  .chips { margin: 6px 0; }
+  .chip { display: inline-block; background: var(--panel2); border: 1px solid var(--border);
+          border-radius: 20px; padding: 2px 10px; font-size: 12px; margin: 0 4px 4px 0;
+          color: var(--muted); cursor: pointer; }
+  .chip:hover { color: var(--accent); border-color: var(--accent); }
+  .msummary { font-size: 14px; color: #cfccc7; margin: 8px 0 0; }
+  .mbody { padding: 0 18px 18px; }
+  .links a { color: var(--accent); text-decoration: none; margin-right: 16px; font-size: 13px; }
+  .stars { margin: 12px 0 6px; user-select: none; }
+  .stars span.s { font-size: 24px; cursor: pointer; color: #4a4a58; }
+  .stars span.s.on { color: var(--accent); }
   .stars .clear { font-size: 12px; color: var(--muted); margin-left: 10px; cursor: pointer; }
-  textarea { width: 100%; min-height: 90px; background: var(--panel); color: var(--text);
+  .wrow { display: flex; gap: 14px; align-items: center; margin: 8px 0;
+          font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .wrow input[type=date] { background: var(--panel2); color: var(--text);
+        border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; }
+  textarea { width: 100%; min-height: 100px; background: var(--panel2); color: var(--text);
              border: 1px solid var(--border); border-radius: 8px; padding: 10px;
              font: 14px/1.5 inherit; resize: vertical; }
-  .wdate { margin: 8px 0; font-size: 13px; color: var(--muted); }
-  .wdate input { background: var(--panel); color: var(--text); border: 1px solid var(--border);
-                 border-radius: 6px; padding: 4px 8px; }
-  .saved { font-size: 12px; color: var(--green); margin-left: 8px; opacity: 0;
-           transition: opacity .3s; }
+  .saved { font-size: 12px; color: var(--green); margin-left: 8px; opacity: 0; transition: opacity .3s; }
   .saved.show { opacity: 1; }
+  .recs h3 { font-size: 13px; color: var(--muted); text-transform: uppercase;
+             letter-spacing: 1px; margin: 18px 0 8px; }
+  .recrow { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+  .rec { flex: none; width: 92px; cursor: pointer; font-size: 11.5px; line-height: 1.3;
+         color: var(--muted); }
+  .rec img { width: 92px; aspect-ratio: 306/380; object-fit: cover; border-radius: 6px;
+             border: 1px solid var(--border); display: block; margin-bottom: 4px; }
+  .rec:hover { color: var(--accent); }
+  .mclose { float: right; margin: 10px 12px 0 0; font-size: 20px; background: none;
+            border: none; color: var(--muted); }
   footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 50px; }
+  @media (max-width: 560px) { .mhead { flex-direction: column; } .mposter { width: 110px; } }
 </style>
 </head>
 <body>
@@ -77,31 +131,45 @@
 
 <div class="bar">
   <input type="search" id="q" placeholder="Search title / director / country…">
+  <select id="fgenre"><option value="all">All genres</option></select>
+  <select id="fdecade"><option value="all">All decades</option></select>
   <select id="fwatch">
     <option value="all">All films</option>
     <option value="unwatched">Unwatched</option>
     <option value="watched">Watched</option>
     <option value="reviewed">Reviewed</option>
   </select>
-  <select id="fdecade"><option value="all">All decades</option></select>
+  <select id="fsort">
+    <option value="rank">Sort: watch first</option>
+    <option value="spine">Sort: spine #</option>
+    <option value="year">Sort: year</option>
+    <option value="runtime">Sort: shortest</option>
+    <option value="title">Sort: title</option>
+  </select>
+</div>
+<div class="bar">
+  <button id="vtoggle">🖼 Poster view</button>
+  <button id="surprise" class="gold">🎲 Surprise me</button>
+  <span style="flex:1"></span>
   <button id="exportLb">Export Letterboxd CSV</button>
-  <button id="exportJson">Backup progress</button>
+  <button id="exportJson">Backup</button>
   <button id="importJson">Restore</button>
   <input type="file" id="importFile" accept=".json" hidden>
 </div>
 
 <div id="list"></div>
-<footer>Data: criterion.com + IMDb datasets · progress is stored in this browser — use Backup to keep a copy</footer>
+
+<div id="overlay"><div id="modal"></div></div>
+<footer>Data: criterion.com · IMDb datasets · Wikipedia — progress is stored in this browser; use Backup to keep a copy</footer>
 
 <script>
 const LS_KEY = "criterion-tracker-v1";
-let films = [], state = {};
+let films = [], state = {}, byRank = {}, gridView = false;
 
 const load = () => {
   try { state = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { state = {}; }
-  // migrate v0 keys ("s<spine>") to spine+year keys (spine 88 is shared by two films)
   let dirty = false;
-  for (const k of Object.keys(state)) {
+  for (const k of Object.keys(state)) {          // migrate v0 keys ("s<spine>")
     if (!/^s\d+$/.test(k)) continue;
     const f = films.find(x => "s" + x.spine === k);
     if (f) { state[keyOf(f)] = state[k]; dirty = true; }
@@ -113,98 +181,152 @@ const save = () => localStorage.setItem(LS_KEY, JSON.stringify(state));
 const keyOf = f => f.spine != null ? "s" + f.spine + "y" + (f.year || "") : "t" + f.title + "|" + f.year;
 const st = f => state[keyOf(f)] || {};
 const setSt = (f, patch) => { state[keyOf(f)] = { ...st(f), ...patch }; save(); updateProgress(); };
+const esc = s => (s || "").toString().replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const lbUrl = f => "https://letterboxd.com/search/films/" + encodeURIComponent(f.title + " " + (f.year || "")) + "/";
+const poster = (f, size) => f.img ? esc(f.img) + "_" + size + ".jpg" : "";
+const hhmm = m => m ? (m >= 60 ? Math.floor(m / 60) + "h " + (m % 60 ? m % 60 + "m" : "") : m + "m") : "";
 
 fetch("films.json").then(r => r.json()).then(data => {
   films = data;
+  films.forEach(f => byRank[f.rank] = f);
   const decades = [...new Set(films.map(f => f.year && Math.floor(f.year / 10) * 10).filter(Boolean))].sort();
-  const sel = document.getElementById("fdecade");
-  decades.forEach(d => sel.insertAdjacentHTML("beforeend", `<option value="${d}">${d}s</option>`));
+  decades.forEach(d => fdecade.insertAdjacentHTML("beforeend", `<option value="${d}">${d}s</option>`));
+  const genres = [...new Set(films.flatMap(f => f.genres || []))].sort();
+  genres.forEach(g => fgenre.insertAdjacentHTML("beforeend", `<option>${g}</option>`));
   load(); render(); updateProgress();
 });
 
-function esc(s) { return (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-
-function lbUrl(f) { return "https://letterboxd.com/search/films/" + encodeURIComponent(f.title + " " + (f.year || "")) + "/"; }
-
-function render() {
+function filtered() {
   const q = document.getElementById("q").value.trim().toLowerCase();
-  const fw = document.getElementById("fwatch").value;
-  const fd = document.getElementById("fdecade").value;
-  const list = document.getElementById("list");
-  const frag = [];
-  for (const f of films) {
+  const fg = fgenre.value, fd = fdecade.value, fw = fwatch.value;
+  let out = films.filter(f => {
     const s = st(f);
-    if (q && !(f.title + " " + f.director + " " + f.country).toLowerCase().includes(q)) continue;
-    if (fw === "watched" && !s.watched) continue;
-    if (fw === "unwatched" && s.watched) continue;
-    if (fw === "reviewed" && !(s.review && s.review.trim())) continue;
-    if (fd !== "all" && (!f.year || Math.floor(f.year / 10) * 10 !== +fd)) continue;
-    frag.push(filmHtml(f, s));
-    if (frag.length >= 2000) break;
-  }
-  list.innerHTML = frag.join("");
+    if (q && !(f.title + " " + f.director + " " + f.country).toLowerCase().includes(q)) return false;
+    if (fg !== "all" && !(f.genres || []).includes(fg)) return false;
+    if (fd !== "all" && (!f.year || Math.floor(f.year / 10) * 10 !== +fd)) return false;
+    if (fw === "watched" && !s.watched) return false;
+    if (fw === "unwatched" && s.watched) return false;
+    if (fw === "reviewed" && !(s.review || "").trim()) return false;
+    return true;
+  });
+  const key = fsort.value;
+  if (key === "spine") out.sort((a, b) => (a.spine ?? 1e9) - (b.spine ?? 1e9));
+  else if (key === "year") out.sort((a, b) => (a.year ?? 3000) - (b.year ?? 3000));
+  else if (key === "runtime") out.sort((a, b) => (a.runtime ?? 1e9) - (b.runtime ?? 1e9));
+  else if (key === "title") out.sort((a, b) => a.title.localeCompare(b.title));
+  else out.sort((a, b) => a.rank - b.rank);
+  return out;
 }
 
-function filmHtml(f, s) {
-  const k = esc(keyOf(f));
-  const imdb = f.imdb_rating ? `<b>${f.imdb_rating.toFixed(1)}</b> ★<br><span style="font-size:11px">${f.imdb_votes.toLocaleString()} votes</span>` : `<span style="font-size:12px">unrated</span>`;
-  const my = s.rating ? ` · you: ${"★".repeat(Math.floor(s.rating))}${s.rating % 1 ? "½" : ""}` : "";
-  return `<div class="film ${s.watched ? "watched" : ""}" data-k="${k}">
-    <div class="row" onclick="toggleOpen(this.parentNode)">
-      <div class="rank">#${f.rank}</div>
-      <div class="check" onclick="event.stopPropagation(); toggleWatched('${k}')">✓</div>
-      <div class="info">
-        <div class="title">${esc(f.title)} <span class="meta">(${f.year || "?"})</span></div>
-        <div class="meta">${esc(f.director)} · ${esc(f.country)}${f.spine != null ? " · spine #" + f.spine : ""}${my}</div>
-      </div>
-      <div class="imdb">${imdb}</div>
+function render() {
+  const list = document.getElementById("list");
+  list.className = gridView ? "grid" : "";
+  list.innerHTML = filtered().map(f => rowHtml(f, st(f))).join("");
+}
+
+function rowHtml(f, s) {
+  const imdb = f.imdb_rating
+    ? `<b>${f.imdb_rating.toFixed(1)}</b> ★<br><span style="font-size:11px">${f.imdb_votes.toLocaleString()} votes</span>`
+    : `<span style="font-size:12px">unrated</span>`;
+  const my = s.rating ? ` · you: ${"★".repeat(s.rating)}` : "";
+  const rt = f.runtime ? " · " + hhmm(f.runtime) : "";
+  return `<div class="film ${s.watched ? "watched" : ""}" data-rank="${f.rank}" onclick="openFilm(${f.rank})">
+    <div class="rank">#${f.rank}</div>
+    <img class="poster" loading="lazy" src="${poster(f, "thumbnail")}" alt="">
+    <div class="pwrap"><img class="poster" loading="lazy" src="${poster(f, "small")}" alt="">
+      <span class="gbadge">#${f.rank}</span><span class="gdone">✓</span></div>
+    <div class="check" onclick="event.stopPropagation(); toggleWatched(${f.rank})">✓</div>
+    <div class="info">
+      <div class="title">${esc(f.title)} <span class="meta">(${f.year || "?"})</span></div>
+      <div class="meta">${esc(f.director)} · ${esc(f.country)}${rt}${f.spine != null ? " · #" + f.spine : ""}${my}</div>
     </div>
-    <div class="detail">
+    <div class="imdb">${imdb}</div>
+    <div class="gcap"><span class="title">${esc(f.title)}</span><span class="meta">${f.year || ""}${f.imdb_rating ? " · " + f.imdb_rating.toFixed(1) + "★" : ""}</span></div>
+  </div>`;
+}
+
+function openFilm(rank) {
+  const f = byRank[rank], s = st(f);
+  const recs = (f.similar || []).map(r => byRank[r]).filter(Boolean);
+  document.getElementById("modal").innerHTML = `
+    <button class="mclose" onclick="closeModal()">✕</button>
+    <div class="mhead">
+      <img class="mposter" src="${poster(f, "medium")}" alt="">
+      <div style="min-width:0">
+        <div class="mtitle">${esc(f.title)}</div>
+        <div class="mmeta">${f.year || "?"} · ${esc(f.director)} · ${esc(f.country)}
+          ${f.runtime ? " · " + hhmm(f.runtime) : ""}${f.spine != null ? " · spine #" + f.spine : ""}<br>
+          Watch-first rank <b style="color:var(--accent)">#${f.rank}</b>
+          ${f.imdb_rating ? ` · IMDb ${f.imdb_rating.toFixed(1)}★ (${f.imdb_votes.toLocaleString()})` : ""}</div>
+        <div class="chips">${(f.genres || []).map(g => `<span class="chip" onclick="filterGenre('${esc(g)}')">${esc(g)}</span>`).join("")}</div>
+        ${f.summary ? `<p class="msummary">${esc(f.summary)}</p>` : ""}
+      </div>
+    </div>
+    <div class="mbody">
       <div class="links">
         <a href="${lbUrl(f)}" target="_blank">Letterboxd ↗</a>
         <a href="${esc(f.url)}" target="_blank">Criterion ↗</a>
         ${f.imdb_id ? `<a href="https://www.imdb.com/title/${f.imdb_id}/" target="_blank">IMDb ↗</a>` : ""}
+        ${f.wiki ? `<a href="${esc(f.wiki)}" target="_blank">Wikipedia ↗</a>` : ""}
       </div>
-      <div class="stars" data-k="${k}">${[1,2,3,4,5].map(i => `<span data-v="${i}" class="${s.rating >= i ? "on" : ""}" onclick="setRating('${k}', ${i})">★</span>`).join("")}<span class="clear" onclick="setRating('${k}', 0)">clear</span></div>
-      <div class="wdate">Watched on <input type="date" value="${esc(s.date || "")}" onchange="setDate('${k}', this.value)"></div>
-      <textarea placeholder="Your review…" onblur="setReview('${k}', this.value, this)">${esc(s.review || "")}</textarea>
+      <div class="stars">${[1, 2, 3, 4, 5].map(i =>
+        `<span class="s ${s.rating >= i ? "on" : ""}" onclick="rate(${rank}, ${i})">★</span>`).join("")}
+        <span class="clear" onclick="rate(${rank}, 0)">clear</span></div>
+      <div class="wrow">
+        <label><input type="checkbox" ${s.watched ? "checked" : ""} onchange="toggleWatched(${rank})"> Watched</label>
+        <span>on <input type="date" value="${esc(s.date || "")}" onchange="setDate(${rank}, this.value)"></span>
+      </div>
+      <textarea placeholder="Your review…" onblur="setReview(${rank}, this.value, this)">${esc(s.review || "")}</textarea>
       <span class="saved">saved ✓</span>
-    </div>
-  </div>`;
+      ${recs.length ? `<div class="recs"><h3>If you liked this</h3><div class="recrow">${recs.map(r =>
+        `<div class="rec" onclick="openFilm(${r.rank})"><img loading="lazy" src="${poster(r, "small")}" alt="">${esc(r.title)}<br><span style="opacity:.6">${r.year || ""}</span></div>`).join("")}</div></div>` : ""}
+    </div>`;
+  document.getElementById("overlay").classList.add("show");
 }
+function closeModal() { document.getElementById("overlay").classList.remove("show"); render(); }
+document.getElementById("overlay").addEventListener("click", e => { if (e.target.id === "overlay") closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
-const byKey = k => films.find(f => keyOf(f) === k);
-
-function toggleOpen(el) { el.classList.toggle("open"); }
-function toggleWatched(k) {
-  const f = byKey(k), s = st(f);
+function toggleWatched(rank) {
+  const f = byRank[rank], s = st(f);
   setSt(f, { watched: !s.watched, date: !s.watched && !s.date ? new Date().toISOString().slice(0, 10) : s.date });
-  render();
+  if (!document.getElementById("overlay").classList.contains("show")) render();
 }
-function setRating(k, v) {
-  const f = byKey(k);
+function rate(rank, v) {
+  const f = byRank[rank];
   setSt(f, { rating: v || undefined, watched: v ? true : st(f).watched });
-  render();
-  document.querySelector(`.film[data-k="${CSS.escape(k)}"]`)?.classList.add("open");
+  openFilm(rank);
 }
-function setDate(k, v) { setSt(byKey(k), { date: v }); }
-function setReview(k, v, ta) {
-  setSt(byKey(k), { review: v });
+function setDate(rank, v) { setSt(byRank[rank], { date: v }); }
+function setReview(rank, v, ta) {
+  setSt(byRank[rank], { review: v });
   const badge = ta.parentNode.querySelector(".saved");
   badge.classList.add("show"); setTimeout(() => badge.classList.remove("show"), 1200);
 }
+function filterGenre(g) { closeModal(); fgenre.value = g; render(); window.scrollTo(0, 0); }
 
 function updateProgress() {
   const watched = films.filter(f => st(f).watched).length;
   const reviewed = films.filter(f => (st(f).review || "").trim()).length;
-  document.getElementById("pcount").textContent =
-    `${watched} / ${films.length} watched · ${reviewed} reviewed`;
+  document.getElementById("pcount").textContent = `${watched} / ${films.length} watched · ${reviewed} reviewed`;
   document.getElementById("pfill").style.width = films.length ? (100 * watched / films.length) + "%" : 0;
 }
 
-document.getElementById("q").addEventListener("input", render);
-document.getElementById("fwatch").addEventListener("change", render);
-document.getElementById("fdecade").addEventListener("change", render);
+["q", "fgenre", "fdecade", "fwatch", "fsort"].forEach(id =>
+  document.getElementById(id).addEventListener(id === "q" ? "input" : "change", render));
+
+document.getElementById("vtoggle").onclick = function () {
+  gridView = !gridView;
+  this.textContent = gridView ? "☰ List view" : "🖼 Poster view";
+  render();
+};
+document.getElementById("surprise").onclick = () => {
+  const pool = filtered().filter(f => !st(f).watched);
+  if (!pool.length) return alert("Nothing unwatched in the current filter!");
+  // bias towards the top of the ranking so the pick is watch-worthy
+  const n = Math.min(pool.length, Math.max(20, Math.floor(pool.length / 4)));
+  openFilm(pool[Math.floor(Math.random() * n)].rank);
+};
 
 // Letterboxd import format: https://letterboxd.com/about/importing-data/
 document.getElementById("exportLb").onclick = () => {
