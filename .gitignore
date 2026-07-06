@@ -1,0 +1,11 @@
+# Secrets — never commit API keys to a public repo
+secrets.local.json
+.env
+
+# Large source datasets (re-downloadable; see README)
+*.tsv.gz
+
+# Cruft
+__pycache__/
+*.pyc
+.DS_Store

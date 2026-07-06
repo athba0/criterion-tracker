@@ -6,20 +6,36 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 films = json.loads((ROOT / "data" / "films_ranked.json").read_text())
-sfile = ROOT / "data" / "summaries.json"
-summaries = json.loads(sfile.read_text()) if sfile.exists() else {}
-afile = ROOT / "data" / "summaries_ar.json"
-ar = json.loads(afile.read_text()) if afile.exists() else {}
 
+
+def load(name):
+    p = ROOT / "data" / name
+    return json.loads(p.read_text()) if p.exists() else {}
+
+
+summaries = load("summaries.json")     # EN + AR from Wikipedia
+ar = load("summaries_ar.json")         # AR from ar.wikipedia / machine translation
+tmdb = load("tmdb.json")               # EN + AR overviews from TMDB
+
+# Source priority — English: Wikipedia intro (encyclopedic) then TMDB overview.
+# Arabic: TMDB official overview, then ar.wikipedia intro, then machine translation.
 for f in films:
     k = f"{f['title']}|{f['year']}"
     s = summaries.get(k) or {}
-    f["summary"] = s.get("summary")
-    f["wiki"] = s.get("wiki")
     a = ar.get(k) or {}
-    f["summary_ar"] = a.get("summary_ar")
+    t = tmdb.get(k) or {}
+
+    f["summary"] = s.get("summary") or t.get("overview_en")
+    f["wiki"] = s.get("wiki")
+    f["tmdb_id"] = t.get("tmdb_id")
+
+    if t.get("overview_ar"):
+        f["summary_ar"], f["ar_src"] = t["overview_ar"], "tmdb"
+    elif a.get("summary_ar"):
+        f["summary_ar"], f["ar_src"] = a["summary_ar"], a.get("src")
+    else:
+        f["summary_ar"], f["ar_src"] = None, None
     f["wiki_ar"] = a.get("wiki_ar")
-    f["ar_src"] = a.get("src")  # "wiki" (authentic) or "mt" (machine-translated)
 
 # --- similarity: same director >> genre overlap > country > era > quality ---
 def sim(a, b):
