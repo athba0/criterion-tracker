@@ -139,6 +139,28 @@
   .afilter .x { cursor: pointer; color: var(--muted); font-weight: 700; }
   .afilter .x:hover { color: var(--text); }
   .link-like { color: var(--accent); cursor: pointer; }
+  #syncDot { display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+             background: var(--muted); margin-left: 2px; vertical-align: middle; }
+  #syncDot.on { background: var(--green); }
+  #syncDot.err { background: #d9534f; }
+  #syncDot.busy { background: var(--accent); animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { opacity: .3; } }
+  #syncOverlay { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: none;
+                 z-index: 20; padding: 8vh 16px; }
+  #syncOverlay.show { display: block; }
+  #syncModal { max-width: 460px; margin: 0 auto; background: var(--panel);
+               border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  #syncModal h2 { margin: 0 0 4px; font-size: 19px; }
+  #syncModal p { color: var(--muted); font-size: 13.5px; margin: 6px 0; }
+  #syncModal input { width: 100%; background: var(--panel2); color: var(--text);
+                     border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px;
+                     font-size: 13px; margin: 8px 0; }
+  #syncModal .srow { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  #syncModal a { color: var(--accent); }
+  .warn { font-size: 12px; color: #e0b64a; background: rgba(228,179,74,.1);
+          border: 1px solid rgba(228,179,74,.3); border-radius: 8px; padding: 8px 10px; }
+  .sstat { font-size: 13px; margin: 8px 0; }
+  .sstat b { color: var(--green); }
   .cast { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
   .cast .actor { color: var(--text); cursor: pointer; }
   .cast .actor:hover { color: var(--accent); }
@@ -193,6 +215,7 @@
   <button id="vtoggle">🖼 Poster view</button>
   <button id="surprise" class="gold">🎲 Surprise me</button>
   <span style="flex:1"></span>
+  <button id="syncBtn">☁ Sync <span id="syncDot"></span></button>
   <button id="exportLb">Export Letterboxd CSV</button>
   <button id="exportJson">Backup</button>
   <button id="importJson">Restore</button>
@@ -202,8 +225,10 @@
 <div id="list"></div>
 
 <div id="overlay"><div id="modal"></div></div>
+
+<div id="syncOverlay"><div id="syncModal"></div></div>
 <footer>
-  Data: criterion.com · IMDb datasets · Wikipedia · TMDB · JustWatch — progress is stored in this browser; use Backup to keep a copy.<br>
+  Data: criterion.com · IMDb datasets · Wikipedia · TMDB · JustWatch — progress is stored in this browser; use ☁ Sync or Backup to keep a copy.<br>
   This product uses the TMDB API but is not endorsed or certified by TMDB. Streaming availability by JustWatch.
 </footer>
 
@@ -227,7 +252,10 @@ const load = () => {
 const save = () => localStorage.setItem(LS_KEY, JSON.stringify(state));
 const keyOf = f => f.spine != null ? "s" + f.spine + "y" + (f.year || "") : "t" + f.title + "|" + f.year;
 const st = f => state[keyOf(f)] || {};
-const setSt = (f, patch) => { state[keyOf(f)] = { ...st(f), ...patch }; save(); updateProgress(); };
+const setSt = (f, patch) => {
+  state[keyOf(f)] = { ...st(f), ...patch, u: Date.now() };  // u = last-edit stamp for merge
+  save(); updateProgress(); schedulePush();
+};
 const esc = s => (s || "").toString().replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const lbUrl = f => "https://letterboxd.com/search/films/" + encodeURIComponent(f.title + " " + (f.year || "")) + "/";
 const poster = (f, size) => f.img ? esc(f.img) + "_" + size + ".jpg" : "";
@@ -244,7 +272,7 @@ fetch("films.json").then(r => r.json()).then(data => {
   countries.forEach(c => fcountry.insertAdjacentHTML("beforeend", `<option>${esc(c)}</option>`));
   const langs = [...new Set(films.map(f => f.language).filter(Boolean))].sort();
   langs.forEach(l => flang.insertAdjacentHTML("beforeend", `<option>${esc(l)}</option>`));
-  load(); render(); updateProgress();
+  load(); render(); updateProgress(); syncOnLoad();
 });
 
 // clicking a director/actor name filters the whole list to that person
@@ -489,7 +517,7 @@ document.getElementById("importFile").onchange = e => {
   const file = e.target.files[0];
   if (!file) return;
   file.text().then(t => {
-    try { state = { ...state, ...JSON.parse(t) }; save(); render(); updateProgress(); }
+    try { state = { ...state, ...JSON.parse(t) }; save(); render(); updateProgress(); schedulePush(); }
     catch { alert("Not a valid progress file."); }
   });
 };
@@ -497,6 +525,150 @@ function download(name, content, type) {
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([content], { type }));
   a.download = name; a.click(); URL.revokeObjectURL(a.href);
+}
+
+// ---- Cross-device sync via a private GitHub Gist ----
+// The token lives only in THIS browser's localStorage (never in the deployed
+// site). Use a token scoped to "gist" only. Progress is stored in one secret
+// gist and merged per-entry by last-edit timestamp.
+const SYNC_KEY = "ct-sync";
+const GIST_FILE = "criterion-progress.json";
+let sync = null;
+try { sync = JSON.parse(localStorage.getItem(SYNC_KEY)); } catch { sync = null; }
+let pushTimer = null;
+
+const saveSync = () => localStorage.setItem(SYNC_KEY, JSON.stringify(sync));
+function setDot(cls, title) {
+  const d = document.getElementById("syncDot");
+  d.className = cls || "";
+  document.getElementById("syncBtn").title = title || "";
+}
+
+async function gh(method, path, body) {
+  const r = await fetch("https://api.github.com" + path, {
+    method,
+    cache: "no-store",  // never reuse a cached gist list — a 2nd device must see fresh data
+    headers: { Authorization: "Bearer " + sync.token, Accept: "application/vnd.github+json" },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!r.ok) throw new Error("GitHub " + r.status + ": " + (await r.text()).slice(0, 140));
+  return r.json();
+}
+
+async function findGist() {  // how a 2nd device locates the shared gist
+  const gists = await gh("GET", "/gists?per_page=100");
+  const g = gists.find(x => x.files && x.files[GIST_FILE]);
+  return g ? g.id : null;
+}
+async function syncPull() {
+  const g = await gh("GET", "/gists/" + sync.gistId);
+  const content = g.files[GIST_FILE] && g.files[GIST_FILE].content;
+  if (content) mergeState(JSON.parse(content));
+}
+async function syncPush() {
+  await gh("PATCH", "/gists/" + sync.gistId,
+    { files: { [GIST_FILE]: { content: JSON.stringify(state) } } });
+  sync.lastSync = Date.now(); saveSync();
+}
+function mergeState(remote) {  // per-entry last-write-wins on the `u` stamp
+  for (const k in remote) {
+    const rem = remote[k], loc = state[k];
+    if (!loc || (rem.u || 0) >= (loc.u || 0)) state[k] = rem;
+  }
+  save();
+}
+
+function schedulePush() {
+  if (!sync || !sync.token || !sync.gistId) return;
+  clearTimeout(pushTimer);
+  setDot("busy", "Saving…");
+  pushTimer = setTimeout(async () => {
+    try { await syncPush(); setDot("on", "Synced"); }
+    catch (e) { setDot("err", "Sync error: " + e.message); }
+  }, 1500);
+}
+
+async function syncNow() {
+  if (!sync || !sync.token || !sync.gistId) return;
+  setDot("busy", "Syncing…");
+  try {
+    await syncPull(); render(); updateProgress();
+    await syncPush();
+    setDot("on", "Synced " + new Date(sync.lastSync).toLocaleString());
+  } catch (e) { setDot("err", "Sync error: " + e.message); throw e; }
+}
+
+async function connectSync(token) {
+  sync = { token: token.trim(), gistId: null, lastSync: 0 };
+  setDot("busy", "Connecting…");
+  const gid = await findGist();          // adopt an existing gist if this token has one
+  if (gid) { sync.gistId = gid; await syncPull(); }
+  else {                                  // first device: create the gist from current state
+    const g = await gh("POST", "/gists", {
+      description: "Criterion Tracker progress", public: false,
+      files: { [GIST_FILE]: { content: JSON.stringify(state) } },
+    });
+    sync.gistId = g.id;
+  }
+  saveSync(); await syncPush();
+  render(); updateProgress();
+}
+
+function renderSyncPanel() {
+  const m = document.getElementById("syncModal");
+  const connected = sync && sync.token && sync.gistId;
+  if (connected) {
+    m.innerHTML = `
+      <h2>☁ Cross-device sync</h2>
+      <div class="sstat"><b>Connected.</b> ${sync.lastSync ? "Last synced " + new Date(sync.lastSync).toLocaleString() : ""}</div>
+      <p>Your watched status, ratings and reviews sync through a private
+        <a href="https://gist.github.com/${esc(sync.gistId)}" target="_blank">GitHub gist ↗</a>.
+        Open this site on another device and connect with the <b>same token</b> to share progress.</p>
+      <div class="srow">
+        <button class="gold" onclick="syncNow().then(()=>renderSyncPanel()).catch(()=>{})">Sync now</button>
+        <button onclick="disconnectSync()">Disconnect this device</button>
+        <button onclick="closeSync()">Close</button>
+      </div>`;
+  } else {
+    m.innerHTML = `
+      <h2>☁ Cross-device sync</h2>
+      <p>Sync your progress across devices through a private GitHub gist — no server, nothing shared publicly.</p>
+      <div class="warn">Use a token scoped to <b>gist only</b>. It is stored only in this browser and never uploaded to the site.
+        <a href="https://github.com/settings/tokens/new?scopes=gist&description=Criterion%20Tracker%20sync" target="_blank">Create a gist-scoped token ↗</a></div>
+      <input id="syncToken" type="password" placeholder="ghp_… (gist scope)" autocomplete="off">
+      <div class="srow">
+        <button class="gold" onclick="doConnect()">Connect</button>
+        <button onclick="closeSync()">Cancel</button>
+      </div>
+      <p style="font-size:12px">Note: a secret gist is unlisted but anyone with its URL can read it. Fine for watch data; avoid if your reviews are sensitive.</p>`;
+  }
+  document.getElementById("syncOverlay").classList.add("show");
+}
+function doConnect() {
+  const t = document.getElementById("syncToken").value.trim();
+  if (!t) return;
+  const m = document.getElementById("syncModal");
+  m.querySelector(".gold").textContent = "Connecting…";
+  connectSync(t)
+    .then(() => { setDot("on", "Synced"); renderSyncPanel(); })
+    .catch(e => { alert("Couldn't connect: " + e.message); sync = null; renderSyncPanel(); });
+}
+function disconnectSync() {
+  sync = null; localStorage.removeItem(SYNC_KEY);
+  setDot("", "Not connected"); renderSyncPanel();
+}
+function closeSync() { document.getElementById("syncOverlay").classList.remove("show"); }
+document.getElementById("syncOverlay").addEventListener("click", e => { if (e.target.id === "syncOverlay") closeSync(); });
+document.getElementById("syncBtn").onclick = renderSyncPanel;
+
+// on load: if configured, pull remote and merge (after films.json loads)
+function syncOnLoad() {
+  if (sync && sync.token && sync.gistId) {
+    setDot("busy", "Syncing…");
+    syncNow().catch(e => setDot("err", "Sync error: " + e.message));
+  } else if (sync && sync.token) {
+    setDot("err", "Reconnect needed");
+  }
 }
 </script>
 </body>
