@@ -8,11 +8,18 @@ ROOT = Path(__file__).resolve().parent.parent
 films = json.loads((ROOT / "data" / "films_ranked.json").read_text())
 sfile = ROOT / "data" / "summaries.json"
 summaries = json.loads(sfile.read_text()) if sfile.exists() else {}
+afile = ROOT / "data" / "summaries_ar.json"
+ar = json.loads(afile.read_text()) if afile.exists() else {}
 
 for f in films:
-    s = summaries.get(f"{f['title']}|{f['year']}") or {}
+    k = f"{f['title']}|{f['year']}"
+    s = summaries.get(k) or {}
     f["summary"] = s.get("summary")
     f["wiki"] = s.get("wiki")
+    a = ar.get(k) or {}
+    f["summary_ar"] = a.get("summary_ar")
+    f["wiki_ar"] = a.get("wiki_ar")
+    f["ar_src"] = a.get("src")  # "wiki" (authentic) or "mt" (machine-translated)
 
 # --- similarity: same director >> genre overlap > country > era > quality ---
 def sim(a, b):
@@ -75,7 +82,9 @@ for i, f in enumerate(films):
 out = json.dumps(films, ensure_ascii=False, separators=(",", ":"))
 (ROOT / "site" / "films.json").write_text(out)
 with_sum = sum(1 for f in films if f["summary"])
-print(f"site/films.json: {len(films)} films, {with_sum} summaries, "
+with_ar = sum(1 for f in films if f["summary_ar"])
+print(f"site/films.json: {len(films)} films, {with_sum} EN summaries, "
+      f"{with_ar} AR summaries, "
       f"{sum(1 for f in films if f['similar'])} with recommendations, "
       f"{len(out) // 1024} KB")
 print("recs for Seven Samurai:",

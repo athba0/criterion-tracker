@@ -92,6 +92,14 @@
           color: var(--muted); cursor: pointer; }
   .chip:hover { color: var(--accent); border-color: var(--accent); }
   .msummary { font-size: 14px; color: #cfccc7; margin: 8px 0 0; }
+  .sumhead { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+  .langtog { display: inline-flex; gap: 2px; }
+  .langtog a { cursor: pointer; color: var(--muted); font-size: 12px; padding: 1px 8px;
+               border-radius: 6px; border: 1px solid transparent; }
+  .langtog a.on { color: var(--accent); border-color: var(--border); background: var(--panel2); }
+  .sum-ar { direction: rtl; text-align: right; font-size: 15.5px; line-height: 1.8;
+            font-family: "Geeza Pro", "Noto Naskh Arabic", "Segoe UI", Tahoma, sans-serif; }
+  .mtnote { color: var(--muted); font-size: 11px; opacity: .8; }
   .mbody { padding: 0 18px 18px; }
   .links a { color: var(--accent); text-decoration: none; margin-right: 16px; font-size: 13px; }
   .stars { margin: 12px 0 6px; user-select: none; }
@@ -165,6 +173,7 @@
 <script>
 const LS_KEY = "criterion-tracker-v1";
 let films = [], state = {}, byRank = {}, gridView = false;
+let prefLang = localStorage.getItem("ct-lang") || "en";
 
 const load = () => {
   try { state = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { state = {}; }
@@ -245,6 +254,33 @@ function rowHtml(f, s) {
   </div>`;
 }
 
+function summaryBlock(f) {
+  if (!f.summary && !f.summary_ar) return "";
+  const both = f.summary && f.summary_ar;
+  // default to the preferred language, but fall back if that one is missing
+  const show = (prefLang === "ar" && f.summary_ar) || !f.summary ? "ar" : "en";
+  const toggle = both
+    ? `<span class="langtog">
+         <a data-l="en" class="${show === "en" ? "on" : ""}" onclick="setLang(this,'en')">EN</a>
+         <a data-l="ar" class="${show === "ar" ? "on" : ""}" onclick="setLang(this,'ar')">ع</a>
+       </span>` : "";
+  const en = f.summary
+    ? `<p class="msummary sum-en" style="display:${show === "en" ? "block" : "none"}">${esc(f.summary)}</p>` : "";
+  const mtnote = f.ar_src === "mt" ? ` <span class="mtnote">(ترجمة آلية)</span>` : "";
+  const ar = f.summary_ar
+    ? `<p class="msummary sum-ar" style="display:${show === "ar" ? "block" : "none"}">${esc(f.summary_ar)}${mtnote}</p>` : "";
+  return `<div class="sumhead">${toggle}</div>${en}${ar}`;
+}
+function setLang(el, l) {
+  prefLang = l;
+  localStorage.setItem("ct-lang", l);
+  const box = el.closest(".mhead") || document;
+  box.querySelectorAll(".langtog a").forEach(a => a.classList.toggle("on", a.dataset.l === l));
+  const en = box.querySelector(".sum-en"), ar = box.querySelector(".sum-ar");
+  if (en) en.style.display = l === "en" ? "block" : "none";
+  if (ar) ar.style.display = l === "ar" ? "block" : "none";
+}
+
 function openFilm(rank) {
   const f = byRank[rank], s = st(f);
   const recs = (f.similar || []).map(r => byRank[r]).filter(Boolean);
@@ -259,7 +295,7 @@ function openFilm(rank) {
           Watch-first rank <b style="color:var(--accent)">#${f.rank}</b>
           ${f.imdb_rating ? ` · IMDb ${f.imdb_rating.toFixed(1)}★ (${f.imdb_votes.toLocaleString()})` : ""}</div>
         <div class="chips">${(f.genres || []).map(g => `<span class="chip" onclick="filterGenre('${esc(g)}')">${esc(g)}</span>`).join("")}</div>
-        ${f.summary ? `<p class="msummary">${esc(f.summary)}</p>` : ""}
+        ${summaryBlock(f)}
       </div>
     </div>
     <div class="mbody">
@@ -268,6 +304,7 @@ function openFilm(rank) {
         <a href="${esc(f.url)}" target="_blank">Criterion ↗</a>
         ${f.imdb_id ? `<a href="https://www.imdb.com/title/${f.imdb_id}/" target="_blank">IMDb ↗</a>` : ""}
         ${f.wiki ? `<a href="${esc(f.wiki)}" target="_blank">Wikipedia ↗</a>` : ""}
+        ${f.wiki_ar ? `<a href="${esc(f.wiki_ar)}" target="_blank">ويكيبيديا ↗</a>` : ""}
       </div>
       <div class="stars">${[1, 2, 3, 4, 5].map(i =>
         `<span class="s ${s.rating >= i ? "on" : ""}" onclick="rate(${rank}, ${i})">★</span>`).join("")}

@@ -1202,5 +1202,881 @@
  "Detour|1945": {
   "summary": "Detour is a 1945 American independent film noir directed by Edgar G. Ulmer and starring Tom Neal and Ann Savage.",
   "wiki": "https://en.wikipedia.org/wiki/Detour_(1945_film)"
+ },
+ "Mona Lisa|1986": {
+  "summary": "Mona Lisa is a 1986 British neo-noir crime drama film directed by Neil Jordan, and written by Jordan and David Leland. It was produced by HandMade Films and stars Bob Hoskins, Cathy Tyson, and Michael Caine.",
+  "wiki": "https://en.wikipedia.org/wiki/Mona_Lisa_(film)"
+ },
+ "Tess|1979": {
+  "summary": "Tess is a 1979 epic romantic drama film directed by Roman Polanski, and starring Nastassja Kinski, Peter Firth, and Leigh Lawson. Adapted from Thomas Hardy's 1891 novel Tess of the d'Urbervilles, the screenplay was written by Gérard Brach, John Brownjohn, and Polanski.",
+  "wiki": "https://en.wikipedia.org/wiki/Tess_(1979_film)"
+ },
+ "Kiss of the Spider Woman|1985": {
+  "summary": "Kiss of the Spider Woman (Portuguese: O Beijo da Mulher-Aranha) is a 1985 drama film directed by Héctor Babenco from a screenplay by Leonard Schrader, based on the 1976 novel by Argentine author Manuel Puig. It stars William Hurt, Raul Julia, Sônia Braga, José Lewgoy, Milton Gonçalves, and Denise Dumont.",
+  "wiki": "https://en.wikipedia.org/wiki/Kiss_of_the_Spider_Woman_(1985_film)"
+ },
+ "Roma|1972": {
+  "summary": "Roma (also known as Fellini's Roma or Federico Fellini's Roma) is a 1972 semi-autobiographical comedy-drama film depicting director Federico Fellini's move from his native Rimini to Rome as a youth. The film was directed by Fellini from a screenplay by himself and Bernardino Zapponi.",
+  "wiki": "https://en.wikipedia.org/wiki/Roma_(1972_film)"
+ },
+ "Graduation|2016": {
+  "summary": "Graduation (Romanian: Bacalaureat) is a 2016 tragedy drama film produced, written, and directed by Cristian Mungiu. Set in Transylvania, it stars Adrian Titieni as Romeo, a doctor on a quest to fix his daughter's (Maria-Victoria Dragus) exam results by underhanded means.",
+  "wiki": "https://en.wikipedia.org/wiki/Graduation_(2016_film)"
+ },
+ "Heaven Can Wait|1943": {
+  "summary": "Heaven Can Wait is a 1943 American supernatural romantic comedy-drama film produced and directed by Ernst Lubitsch and starring Gene Tierney, Don Ameche, and Charles Coburn. The film follows Henry Van Cleve, a man brought up in late 19th-century New York who, upon his death in 1942, attempts to argue to Satan that he deserves to be in Hell based on his life choices.",
+  "wiki": "https://en.wikipedia.org/wiki/Heaven_Can_Wait_(1943_film)"
+ },
+ "Island of Lost Souls|1932": {
+  "summary": "Island of Lost Souls is a 1932 American pre-Code science fiction horror film directed by Erle C. Kenton.",
+  "wiki": "https://en.wikipedia.org/wiki/Island_of_Lost_Souls_(1932_film)"
+ },
+ "Diary of a Chambermaid|1964": {
+  "summary": "Diary of a Chambermaid (French: Le journal d'une femme de chambre, Italian: Il diario di una cameriera) is a 1964 Italian-French satirical drama film directed by Spanish filmmaker Luis Buñuel and starring Jeanne Moreau as a Parisian chambermaid who uses her body and wiles to navigate the perversion, corruption, and violence she encounters at the provincial estate where she goes to work. Though…",
+  "wiki": "https://en.wikipedia.org/wiki/Diary_of_a_Chambermaid_(1964_film)"
+ },
+ "The In-Laws|1979": {
+  "summary": "The In-Laws is a 1979 American action comedy film starring Alan Arkin and Peter Falk, written by Andrew Bergman and directed by Arthur Hiller. It was filmed on various locations, including Mexico, which served as the film's representation of the fictional Central American setting.",
+  "wiki": "https://en.wikipedia.org/wiki/The_In-Laws_(1979_film)"
+ },
+ "The Milky Way|1969": {
+  "summary": "The Milky Way (French: La Voie lactée) is a 1969 surrealist comedy-drama film directed by Luis Buñuel. It stars Paul Frankeur, Laurent Terzieff, Denis Manuel, and Daniel Pilon, with Alain Cuny, Michel Piccoli, and Delphine Seyrig in supporting roles.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Milky_Way_(1969_film)"
+ },
+ "King of the Hill|1993": {
+  "summary": "King of the Hill is a 1993 American coming-of-age drama film written and directed by Steven Soderbergh. Adapted from A.",
+  "wiki": "https://en.wikipedia.org/wiki/King_of_the_Hill_(1993_film)"
+ },
+ "A Canterbury Tale|1944": {
+  "summary": "A Canterbury Tale is a 1944 British film by Michael Powell and Emeric Pressburger starring Eric Portman, Sheila Sim, Dennis Price and Sgt. John Sweet; Esmond Knight provided narration and played two small roles.",
+  "wiki": "https://en.wikipedia.org/wiki/A_Canterbury_Tale"
+ },
+ "Love Affair|1939": {
+  "summary": "Love Affair is a 1939 American romance film, co-starring Charles Boyer, Irene Dunne, and Maria Ouspenskaya. It was directed by Leo McCarey and written by Delmer Daves and Donald Ogden Stewart, based on a story by McCarey and Mildred Cram.",
+  "wiki": "https://en.wikipedia.org/wiki/Love_Affair_(1939_film)"
+ },
+ "Richard III|1955": {
+  "summary": "Richard III is a 1955 British Technicolor film adaptation of William Shakespeare's historical play of the same name, also incorporating elements from his Henry VI, Part 3. It was directed and produced by Laurence Olivier, who also played the lead role.",
+  "wiki": "https://en.wikipedia.org/wiki/Richard_III_(1955_film)"
+ },
+ "Resurrection|2025": {
+  "summary": "Resurrection (Chinese: 狂野时代; lit. 'Wild Times') is a 2025 epic science fiction drama film written and directed by Bi Gan.",
+  "wiki": "https://en.wikipedia.org/wiki/Resurrection_(2025_film)"
+ },
+ "Claudine|1974": {
+  "summary": "Claudine is a 1974 American romantic comedy-drama film, directed by John Berry. Claudine was written by Lester Pine and Tina Pine, produced by Third World Cinema, and distributed by 20th Century Fox, starring James Earl Jones, Diahann Carroll, and Lawrence Hilton-Jacobs.",
+  "wiki": "https://en.wikipedia.org/wiki/Claudine_(film)"
+ },
+ "History Is Made at Night|1937": {
+  "summary": "History Is Made at Night is a 1937 American romantic dramedy film directed by Frank Borzage and starring Jean Arthur, Charles Boyer and Colin Clive. The film has been noted for its blending of genres, including comedy, drama and romance, as well as its inclusion of elements of suspense and disaster films in its final act.",
+  "wiki": "https://en.wikipedia.org/wiki/History_Is_Made_at_Night_(1937_film)"
+ },
+ "The King of Kings|1927": {
+  "summary": "The King of Kings is a 1927 American silent epic film produced and directed by Cecil B. DeMille.",
+  "wiki": "https://en.wikipedia.org/wiki/The_King_of_Kings_(1927_film)"
+ },
+ "Mahjong|1996": {
+  "summary": "Mahjong (traditional Chinese: 麻將; simplified Chinese: 麻将; pinyin: Májiàng) is a 1996 Taiwanese comedy film written and directed by Edward Yang. The film stars Chang Chen, Nick Erickson and Virginie Ledoyen.",
+  "wiki": "https://en.wikipedia.org/wiki/Mahjong_(film)"
+ },
+ "Last Holiday|1950": {
+  "summary": "Last Holiday is a 1950 British black comedy film directed by Henry Cass and starring Alec Guinness. It was written and co-produced by J.",
+  "wiki": "https://en.wikipedia.org/wiki/Last_Holiday_(1950_film)"
+ },
+ "Girls of the Night|1961": {
+  "summary": "Girls of the Night (Japanese: 女ばかりの夜, Hepburn: Onna bakari no yoru; lit. Nothing but Women of the Night), also titled Girls of Dark, is a 1961 Japanese drama film directed by Kinuyo Tanaka and written by Sumie Tanaka.",
+  "wiki": "https://en.wikipedia.org/wiki/Girls_of_the_Night_(1961_film)"
+ },
+ "Carlos|2010": {
+  "summary": "Carlos, also known as Carlos the Jackal, is a 2010 biographical film and television miniseries about the life of Venezuelan terrorist Ilich Ramírez Sánchez, nicknamed Carlos the Jackal, covering his first series of attacks in 1973 until his arrest in 1994. It premiered as a three-part miniseries on French pay channel Canal+, with the three parts airing on 19 May, 26 May and 2 June 2010.",
+  "wiki": "https://en.wikipedia.org/wiki/Carlos_(miniseries)"
+ },
+ "The Chorus|1982": {
+  "summary": "The Chorus (Persian: همسرایان, Hamsorayan) is a 1982 Iranian short film directed by Abbas Kiarostami.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Chorus_(1982_film)"
+ },
+ "Revenge|1989": {
+  "summary": "Revenge (Russian: Месть, romanized: Mest, literally \"Revenge\", also known as The Reed Flute) is a 1989 Soviet historical drama film directed by Ermek Shinarbaev and written by Anatoli Kim. It was screened in the Un Certain Regard section at the 1991 Cannes Film Festival.",
+  "wiki": "https://en.wikipedia.org/wiki/Revenge_(1989_film)"
+ },
+ "The Moment of Truth|1965": {
+  "summary": "The Moment of Truth (Italian: Il momento della verità) is a 1965 Italian drama film directed by Francesco Rosi. It was entered into the 1965 Cannes Film Festival.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Moment_of_Truth_(1965_film)"
+ },
+ "Compensation|1999": {
+  "summary": "Compensation is a 1999 independent drama film produced, co-edited and directed by Zeinabu irene Davis and written by Marc Arthur Chéry. The film is about two parallel love stories set in turn-of-the-century and present-day Chicago, with both stories concerning a relationship between a deaf woman and a hearing man.",
+  "wiki": "https://en.wikipedia.org/wiki/Compensation_(film)"
+ },
+ "Douce|1943": {
+  "summary": "Love Story (French: Douce) is a 1943 French historical romantic drama film directed by Claude Autant-Lara and starring Odette Joyeux, Madeleine Robinson and Marguerite Moreno. The film's sets were designed by the art director Jacques Krauss.",
+  "wiki": "https://en.wikipedia.org/wiki/Love_Story_(1943_film)"
+ },
+ "Toni|1935": {
+  "summary": "Toni is a 1935 French drama film directed by Jean Renoir and starring Charles Blavette, Celia Montalván and Édouard Delmont. The credits mention no writers other than the story writer Jacques Levert, but the script was later confirmed to be authored by Renoir and Carl Einstein.",
+  "wiki": "https://en.wikipedia.org/wiki/Toni_(1935_film)"
+ },
+ "The Funeral|1984": {
+  "summary": "The Funeral (Japanese: お葬式, Hepburn: Osōshiki) is a 1984 Japanese comedy film written and directed by Juzo Itami. The film shows the preparations for a traditional Japanese funeral.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Funeral_(1984_film)"
+ },
+ "The Threepenny Opera|1931": {
+  "summary": "The Threepenny Opera (German: Die 3 Groschen-Oper) is a 1931 German musical film directed by G. W.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Threepenny_Opera_(1931_film)"
+ },
+ "Love Letter|1953": {
+  "summary": "Love Letter (Japanese: 恋文, Hepburn: Koibumi) is a 1953 Japanese drama film and the first film directed by actress Kinuyo Tanaka. With her directing debut, Tanaka became the second female film director in Japan after Tazuko Sakane.",
+  "wiki": "https://en.wikipedia.org/wiki/Love_Letter_(1953_film)"
+ },
+ "Sapphire|1959": {
+  "summary": "Sapphire is a 1959 British crime drama film directed by Basil Dearden and starring Nigel Patrick, Yvonne Mitchell, Michael Craig, and Paul Massie. A progressive film for its time, it focuses on racism in London toward immigrants from the West Indies, and explores the \"underlying insecurities and fears of ordinary people\" about those of another race.",
+  "wiki": "https://en.wikipedia.org/wiki/Sapphire_(film)"
+ },
+ "Dishonored|1931": {
+  "summary": "Dishonored is a 1931 American pre-Code Paramount Pictures romantic spy film directed and edited by Josef von Sternberg, who also cowrote the film with Daniel N. Rubin.",
+  "wiki": "https://en.wikipedia.org/wiki/Dishonored_(film)"
+ },
+ "Girlfriends|1978": {
+  "summary": "Girlfriends is a 1978 American comedy drama film produced and directed by Claudia Weill and written by Vicki Polon. The film stars Melanie Mayron as Susan Weinblatt, a Jewish photographer who experiences loneliness once her roommate Anne (Anita Skinner) moves out of their apartment in New York City.",
+  "wiki": "https://en.wikipedia.org/wiki/Girlfriends_(1978_film)"
+ },
+ "Calcutta|1969": {
+  "summary": "Calcutta is a 1969 French documentary film about Calcutta, directed by Louis Malle. Most of the footage was shot in Calcutta in 1967-1968 alongside Mrinal Sen who was then shooting footage for his film Calcutta 71 and Padatik.",
+  "wiki": "https://en.wikipedia.org/wiki/Calcutta_(1969_film)"
+ },
+ "Torment|1944": {
+  "summary": "Torment (Swedish: Hets) is a 1944 Swedish film, directed by Alf Sjöberg from a screenplay by Ingmar Bergman. The film, a tale of sex, passion and murder, was originally released as Frenzy in the United Kingdom, although later releases have used the US title.",
+  "wiki": "https://en.wikipedia.org/wiki/Torment_(1944_film)"
+ },
+ "The Furies|1950": {
+  "summary": "The Furies is a 1950 American Western film directed by Anthony Mann and starring Barbara Stanwyck, Wendell Corey and Walter Huston in his final film performance. Based on the 1948 Niven Busch novel of the same name, its plot follows the ruthless daughter of a tyrannical rancher in 1870s New Mexico Territory who struggles with her stake in his estate.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Furies_(1950_film)"
+ },
+ "Scandal|1950": {
+  "summary": "Scandal (Japanese: 醜聞, Hepburn: Sukyandaru; or Shūbun) is a 1950 Japanese drama film directed by Akira Kurosawa and written by Kurosawa and Ryūzō Kikushima, and stars Toshiro Mifune, Takashi Shimura, and Yoshiko Yamaguchi. Produced by Shochiku, Scandal tells the story of the painter Aoye and singer Saijo and their efforts to take the editors of a tabloid magazine to court for falsely depicting…",
+  "wiki": "https://en.wikipedia.org/wiki/Scandal_(1950_film)"
+ },
+ "The Housemaid|1960": {
+  "summary": "The Housemaid (Korean: 하녀; RR: Hanyeo) is a 1960 South Korean film, produced, written and directed by Kim Ki-young. It stars Lee Eun-shim, Ju Jeung-nyeo and Kim Jin-kyu.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Housemaid_(1960_film)"
+ },
+ "The Lower Depths|1957": {
+  "summary": "The Lower Depths (どん底, Donzoko) is a 1957 Japanese film directed by Akira Kurosawa, the screenplay by Hideo Oguni and Akira Kurosawa, based on the 1902 play The Lower Depths by Maxim Gorky. The setting was changed for the film from late 19th-century Russia to Edo period Japan.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Lower_Depths_(1957_film)"
+ },
+ "Oedipus Rex|1967": {
+  "summary": "Oedipus Rex (Italian: Edipo re) is a 1967 Italian film written and directed by Pier Paolo Pasolini, based upon the Greek tragedy Oedipus Rex written by Sophocles in 428 BC. It stars Pasolini's regular collaborator Franco Citti in the titular role, along with Alida Valli, Carmelo Bene and Julian Beck.",
+  "wiki": "https://en.wikipedia.org/wiki/Oedipus_Rex_(1967_film)"
+ },
+ "Pariah|2011": {
+  "summary": "Pariah is a 2011 American drama film written and directed by Dee Rees. It tells the story of Alike (Adepero Oduye), a 17-year-old Black teenager embracing her identity as a lesbian.",
+  "wiki": "https://en.wikipedia.org/wiki/Pariah_(2011_film)"
+ },
+ "Stromboli|1950": {
+  "summary": "Stromboli (Italian: Stromboli (Terra di Dio), lit. 'Stromboli (Land of God)') is a 1950 drama film directed by Roberto Rossellini and starring Ingrid Bergman.",
+  "wiki": "https://en.wikipedia.org/wiki/Stromboli_(1950_film)"
+ },
+ "The Dead|1987": {
+  "summary": "The Dead is a 1987 period drama film directed by John Huston, written by his son Tony Huston, and starring his daughter Anjelica Huston, alongside an ensemble cast including Helena Carroll, Cathleen Delany, Dan O'Herlihy, Marie Kean, Donal Donnelly, Seán McClory, Frank Patterson, and Colm Meaney. The film takes place in Dublin in 1904 at an Epiphany party hosted by two sisters, Kate and Julia…",
+  "wiki": "https://en.wikipedia.org/wiki/The_Dead_(1987_film)"
+ },
+ "Shadows|1959": {
+  "summary": "Shadows is a 1958 American independent drama film directed by John Cassavetes about race relations during the Beat Generation years in New York City. The film stars Ben Carruthers, Lelia Goldoni, and Hugh Hurd as three black siblings.",
+  "wiki": "https://en.wikipedia.org/wiki/Shadows_(1958_film)"
+ },
+ "The Uninvited|1944": {
+  "summary": "The Uninvited is a 1944 American supernatural horror film that was directed by Lewis Allen and stars Ray Milland, Ruth Hussey, and Donald Crisp. The film is based on Dorothy Macardle's novel Uneasy Freehold (1941), which was published in the United States as The Uninvited (1942) and deals with a brother and sister who purchase a house in Cornwall, England, that is plagued by paranormal events.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Uninvited_(1944_film)"
+ },
+ "Kalpana|1948": {
+  "summary": "Kalpana (transl. Imagination) is a 1948 Indian Hindi-language dance film written and directed by dancer Uday Shankar.",
+  "wiki": "https://en.wikipedia.org/wiki/Kalpana_(1948_film)"
+ },
+ "Désiré|1937": {
+  "summary": "Désiré is a 1937 French comedy film directed by Sacha Guitry and starring Guitry, Jacqueline Delubac, Jacques Baumer and Arletty.",
+  "wiki": "https://en.wikipedia.org/wiki/D%C3%A9sir%C3%A9_(1937_film)"
+ },
+ "Metropolitan|1990": {
+  "summary": "Metropolitan is a 1990 American romantic comedy-drama film produced, written and directed by Whit Stillman, in his feature directorial debut. The film concerns the lives of a group of wealthy young socialites during debutante season in Manhattan.",
+  "wiki": "https://en.wikipedia.org/wiki/Metropolitan_(1990_film)"
+ },
+ "Insomnia|1997": {
+  "summary": "Insomnia is a 1997 Norwegian neo-noir thriller film about a police detective investigating a murder in a town located above the Arctic Circle. The investigation goes horribly wrong when he mistakenly shoots his partner and subsequently attempts to cover it up.",
+  "wiki": "https://en.wikipedia.org/wiki/Insomnia_(1997_film)"
+ },
+ "Point Blank|1967": {
+  "summary": "Point Blank is a 1967 American crime film directed by John Boorman, starring Lee Marvin, co-starring Angie Dickinson, Keenan Wynn and Carroll O'Connor, and adapted from the 1962 crime noir pulp novel The Hunter, the first in the Parker series of crime novels written by Donald E. Westlake under the nom de plume of Richard Stark.",
+  "wiki": "https://en.wikipedia.org/wiki/Point_Blank_(1967_film)"
+ },
+ "Cat People|1942": {
+  "summary": "Cat People is a 1942 American supernatural horror film directed by Jacques Tourneur and produced for RKO by Val Lewton. The film tells the story of Irena Dubrovna, a newly married Serbian fashion illustrator obsessed with the idea that she is descended from an ancient tribe of Cat People who metamorphose into black panthers when aroused.",
+  "wiki": "https://en.wikipedia.org/wiki/Cat_People_(1942_film)"
+ },
+ "Fist of Fury|1972": {
+  "summary": "Fist of Fury (Chinese: 精武門; lit. 'Jingwu Tradition'), also fully titled as Fist of Fury: The Chinese Connection, is a 1972 Hong Kong martial arts film directed by Lo Wei and produced by Raymond Chow for Golden Harvest.",
+  "wiki": "https://en.wikipedia.org/wiki/Fist_of_Fury"
+ },
+ "House|1977": {
+  "summary": "House (Japanese: ハウス, Hepburn: Hausu) is a 1977 Japanese comedy horror film directed and produced by Nobuhiko Obayashi. It is about a schoolgirl traveling with her six friends to her ailing aunt's country home, where they come face to face with supernatural events as the girls are, one by one, devoured by the home.",
+  "wiki": "https://en.wikipedia.org/wiki/House_(1977_film)"
+ },
+ "Dead Ringers|1988": {
+  "summary": "Dead Ringers is a 1988 psychological thriller film starring Jeremy Irons in a dual role as identical twin gynecologists. David Cronenberg directed, and co-wrote the screenplay with Norman Snider.",
+  "wiki": "https://en.wikipedia.org/wiki/Dead_Ringers_(film)"
+ },
+ "Shallow Grave|1994": {
+  "summary": "Shallow Grave is a 1994 British black comedy crime film directed by Danny Boyle, in his feature directorial debut, and starring Ewan McGregor, Christopher Eccleston, and Kerry Fox. Its plot follows a group of flatmates in Edinburgh who set off a chain of events after dismembering and burying a mysterious new tenant who died and left behind a large sum of money.",
+  "wiki": "https://en.wikipedia.org/wiki/Shallow_Grave_(1994_film)"
+ },
+ "A Room with a View|1986": {
+  "summary": "A Room with a View is a 1985 British romance film directed by James Ivory and produced by Ismail Merchant. It was written by Ruth Prawer Jhabvala, who adapted E.",
+  "wiki": "https://en.wikipedia.org/wiki/A_Room_with_a_View_(1985_film)"
+ },
+ "Election|1999": {
+  "summary": "Election is a 1999 American satirical black comedy film directed by Alexander Payne from a screenplay by Payne and Jim Taylor, based on Tom Perrotta's 1998 novel. The plot revolves around a student body election and satirizes politics and high school life.",
+  "wiki": "https://en.wikipedia.org/wiki/Election_(1999_film)"
+ },
+ "The Age of Innocence|1993": {
+  "summary": "The Age of Innocence is a 1993 American historical romantic drama film directed by Martin Scorsese. The screenplay was adapted from Edith Wharton's 1920 novel by Scorsese and Jay Cocks.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Age_of_Innocence_(1993_film)"
+ },
+ "All Night Long|1962": {
+  "summary": "All Night Long (also known as Night People) is a 1962 British neo noir drama film directed by Basil Dearden and starring Patrick McGoohan, Keith Michell, Betsy Blair, Paul Harris, Marti Stevens, and Richard Attenborough. The story by Nel King and Paul Jarrico (who wrote under the pseudonym \"Peter Achilles\") is an updated version of William Shakespeare's Othello, set in the London jazz scene of…",
+  "wiki": "https://en.wikipedia.org/wiki/All_Night_Long_(1962_film)"
+ },
+ "Mayerling|1936": {
+  "summary": "Mayerling is a 1936 French historical drama film directed by Anatole Litvak and produced by Seymour Nebenzal from a screenplay by Marcel Achard, Joseph Kessel, and Irma von Cube, based on the 1930 novel Idyll's End by Claude Anet. The film stars Charles Boyer and Danielle Darrieux with René Bergeron, Jean Davy, Jean Dax, Jean Debucourt and Gabrielle Dorziat, and Jean-Louis Barrault in a bit part.",
+  "wiki": "https://en.wikipedia.org/wiki/Mayerling_(1936_film)"
+ },
+ "Miss Julie|1951": {
+  "summary": "Miss Julie (Swedish: Fröken Julie) is a 1951 Swedish drama film directed by Alf Sjöberg and starring Anita Björk and Ulf Palme, based on the 1888 play by August Strindberg. The film deals with class, sex and power as the title character, the daughter of a Count in 19th century Sweden, begins a relationship with one of the estate's servants.",
+  "wiki": "https://en.wikipedia.org/wiki/Miss_Julie_(1951_film)"
+ },
+ "The White Angel|1955": {
+  "summary": "L'angelo bianco (internationally released as The White Angel) is a 1955 Italian melodrama film directed by Raffaello Matarazzo. It is the sequel to Nobody's Children (1951).",
+  "wiki": "https://en.wikipedia.org/wiki/The_White_Angel_(1955_film)"
+ },
+ "Quadrille|1938": {
+  "summary": "Quadrille is a 1938 French comedy film directed by Sacha Guitry and starring Guitry, Gaby Morlay and Jacqueline Delubac. It was shot at the Joinville Studios in Paris and on location around the city.",
+  "wiki": "https://en.wikipedia.org/wiki/Quadrille_(1938_film)"
+ },
+ "Demon Pond|1979": {
+  "summary": "Demon Pond (Japanese: 夜叉ヶ池, Hepburn: Yasha-ga-ike) is a 1979 Japanese romantic fantasy film directed by Masahiro Shinoda. It is an adaptation of the 1913 play of the same name by Izumi Kyōka, with an adapted screenplay written by Haruhiko Mimura and Tsutomu Tamura.",
+  "wiki": "https://en.wikipedia.org/wiki/Demon_Pond_(1979_film)"
+ },
+ "Take Out|2004": {
+  "summary": "Take Out is a 2004 American independent drama film written and directed by Sean Baker and Shih-Ching Tsou. Tsou's co-directorial debut feature and Baker's second work, the film follows an undocumented Chinese immigrant working as a deliveryman for a Chinese take-out shop in New York City.",
+  "wiki": "https://en.wikipedia.org/wiki/Take_Out_(2004_film)"
+ },
+ "Black Sun|1964": {
+  "summary": "Black Sun (Japanese: 黒い太陽, Hepburn: Kuroi taiyō) is a 1964 Nikkatsu film directed by Koreyoshi Kurahara based on a story by Tensei Kono and starring Tamio Kawachi and Chico Lourant (often cited as Chico Roland). The film had many of the same cast, crew, and characters as Kurahara's earlier film The Warped Ones.",
+  "wiki": "https://en.wikipedia.org/wiki/Black_Sun_(1964_film)"
+ },
+ "Chains|1949": {
+  "summary": "Catene (internationally released as Chains) is a 1949 Italian melodrama film directed by Raffaello Matarazzo. It had an impressive commercial success, being seen by 6 million people, one in eight Italians of the time, and was followed by a series of six other successful films directed by Matarazzo and featuring the couple Amedeo Nazzari and Yvonne Sanson.",
+  "wiki": "https://en.wikipedia.org/wiki/Chains_(film)"
+ },
+ "Overlord|1975": {
+  "summary": "Overlord is a 1975 black-and-white British war film written and directed by Stuart Cooper. Set during the Second World War, around the D-Day invasion (Operation Overlord), the film is about a young British soldier's experiences and his meditations on being part of the war machinery, including his premonitions of death.",
+  "wiki": "https://en.wikipedia.org/wiki/Overlord_(1975_film)"
+ },
+ "Fanfan la Tulipe|1952": {
+  "summary": "Fanfan la Tulipe is a 1952 French comedy adventure film directed by Christian-Jaque. It has also been categorized under swashbuckler films.",
+  "wiki": "https://en.wikipedia.org/wiki/Fanfan_la_Tulipe"
+ },
+ "Tormento|1950": {
+  "summary": "Torment (Italian: Tormento) is a 1950 Italian melodrama film directed by Raffaello Matarazzo and starring Amedeo Nazzari, Yvonne Sanson and Annibale Betrone. The film's sets were designed by Ottavio Scotti.",
+  "wiki": "https://en.wikipedia.org/wiki/Torment_(1950_Italian_film)"
+ },
+ "El amor brujo|1986": {
+  "summary": "El amor brujo (Love, the Magician, or Wedded by Witchcraft) or Carlos Saura Dance Trilogy, Part 3: El Amor Brujo is a 1986 Spanish musical film written and directed by Carlos Saura. It was directed and choreographed in the flamenco style by Maria Pagès.",
+  "wiki": "https://en.wikipedia.org/wiki/El_amor_brujo_(1986_film)"
+ },
+ "The Tales of Hoffmann|1951": {
+  "summary": "The Tales of Hoffmann is a 1951 British Technicolor comic opera film written, produced and directed by the team of Michael Powell and Emeric Pressburger working under the umbrella of their production company The Archers. It is an adaptation of Jacques Offenbach's 1881 opera The Tales of Hoffmann, itself based on three short stories by E.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Tales_of_Hoffmann_(1951_film)"
+ },
+ "The Idiot|1951": {
+  "summary": "The Idiot (Japanese: 白痴, Hepburn: Hakuchi) is a 1951 Japanese film directed by Akira Kurosawa from a screenplay co-written with Eijirō Hisaita. It is based on the 1869 novel The Idiot by Fyodor Dostoevsky.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Idiot_(1951_film)"
+ },
+ "The Lovers|1958": {
+  "summary": "The Lovers (French: Les amants) is a 1958 French drama film directed by Louis Malle which stars Jeanne Moreau, Alain Cuny, and Jean-Marc Bory. Based on the posthumously-published 1876 short story \"Point de Lendemain\" (\"No Tomorrow\") by Dominique Vivant (1747–1825), the film concerns a woman involved in adultery who rediscovers human love.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Lovers_(1958_film)"
+ },
+ "Rembrandt|1936": {
+  "summary": "Rembrandt is a 1936 British biographical film made by London Film Productions of the life of 17th-century Dutch painter Rembrandt van Rijn. The film was produced and directed by Alexander Korda from a screenplay by June Head and Lajos Bíró based on a story by Carl Zuckmayer.",
+  "wiki": "https://en.wikipedia.org/wiki/Rembrandt_(1936_film)"
+ },
+ "Jericho|1937": {
+  "summary": "Jericho is a 1937 British drama film directed by Thornton Freeland and starring Paul Robeson, Henry Wilcoxon and Wallace Ford. It was released in the US with the alternative title Dark Sands.",
+  "wiki": "https://en.wikipedia.org/wiki/Jericho_(1937_film)"
+ },
+ "Army|1944": {
+  "summary": "Army (Japanese: 陸軍, Hepburn: Rikugun) is a 1944 Japanese film directed by Keisuke Kinoshita and starring Chishū Ryū and Kinuyo Tanaka. It is best known for its final scene, which Japanese World War II censors found troubling.",
+  "wiki": "https://en.wikipedia.org/wiki/Army_(1944_film)"
+ },
+ "Women in Love|1969": {
+  "summary": "Women in Love is a 1969 British romantic drama film directed by Ken Russell and starring Alan Bates, Oliver Reed, Glenda Jackson, and Jennie Linden. The film was adapted by Larry Kramer from D.",
+  "wiki": "https://en.wikipedia.org/wiki/Women_in_Love_(film)"
+ },
+ "Heart of a Dog|2015": {
+  "summary": "Heart of a Dog is a 2015 American documentary film directed by American visual artist and composer Laurie Anderson.",
+  "wiki": "https://en.wikipedia.org/wiki/Heart_of_a_Dog_(2015_film)"
+ },
+ "Summertime|1955": {
+  "summary": "Summertime is a 1955 romantic drama film directed by David Lean, and starring Katharine Hepburn, Rossano Brazzi, Darren McGavin, and Isa Miranda. It follows a lonely middle-aged American secretary and her experiences touring Venice alone for the first time, during which she falls in love with an Italian antiques dealer.",
+  "wiki": "https://en.wikipedia.org/wiki/Summertime_(1955_film)"
+ },
+ "Woman of the Year|1942": {
+  "summary": "Woman of the Year is a 1942 American romantic comedy drama film directed by George Stevens and starring Spencer Tracy and Katharine Hepburn. The film was written by Ring Lardner Jr. and Michael Kanin (with uncredited work on the rewritten ending by John Lee Mahin), and produced by Joseph L.",
+  "wiki": "https://en.wikipedia.org/wiki/Woman_of_the_Year"
+ },
+ "Loving Couples|1964": {
+  "summary": "Loving Couples (Swedish: Älskande par) is a 1964 Swedish drama film directed by Mai Zetterling. It was Zetterling's first feature film as director, and was entered into the 1965 Cannes Film Festival.",
+  "wiki": "https://en.wikipedia.org/wiki/Loving_Couples_(1964_film)"
+ },
+ "Judex|1963": {
+  "summary": "Judex is a 1963 French-language neo-noir crime film remake of the 1916 French serial film of the same name concerning the adventures of pulp hero Judex. Directed by French filmmaker Georges Franju, the film stars Channing Pollock as Judex/Vallieres, Édith Scob as Jacqueline and Francine Bergé as Diana.",
+  "wiki": "https://en.wikipedia.org/wiki/Judex_(1963_film)"
+ },
+ "Safe|1995": {
+  "summary": "Safe is a 1995 American psychological drama film written and directed by Todd Haynes. The film stars Julianne Moore, Peter Friedman, Xander Berkeley, and James LeGros.",
+  "wiki": "https://en.wikipedia.org/wiki/Safe_(1995_film)"
+ },
+ "Night Moves|1975": {
+  "summary": "Night Moves is a 1975 American neo-noir thriller film directed by Arthur Penn from a screenplay by Alan Sharp. It stars Gene Hackman as an ex-professional football player turned Los Angeles private investigator, who uncovers a series of sinister events while searching for the missing teenaged daughter of a former film actress.",
+  "wiki": "https://en.wikipedia.org/wiki/Night_Moves_(1975_film)"
+ },
+ "Elvira Madigan|1967": {
+  "summary": "Elvira Madigan is a 1967 Swedish romantic drama film directed by Bo Widerberg and starring Pia Degermark and Thommy Berggren. It is based on the tragedy of the Danish slackrope dancer Hedvig Jensen, working under the stage name of Elvira Madigan at her stepfather's travelling circus, and her romance with Swedish nobleman lieutenant Sixten Sparre.",
+  "wiki": "https://en.wikipedia.org/wiki/Elvira_Madigan_(1967_film)"
+ },
+ "The Rite|1969": {
+  "summary": "The Rite (Swedish: Riten) is a 1969 Swedish drama film written and directed by Ingmar Bergman. It premiered on Swedish television on 25 March 1969.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Rite_(1969_film)"
+ },
+ "Dreams|1955": {
+  "summary": "Dreams (Swedish: Kvinnodröm) is a 1955 Swedish drama film written and directed by Ingmar Bergman.",
+  "wiki": "https://en.wikipedia.org/wiki/Dreams_(1955_film)"
+ },
+ "Rumble Fish|1983": {
+  "summary": "Rumble Fish is a 1983 American teen drama noir film directed by Francis Ford Coppola. It is based on the 1975 novel Rumble Fish by S.",
+  "wiki": "https://en.wikipedia.org/wiki/Rumble_Fish"
+ },
+ "A Lesson in Love|1954": {
+  "summary": "A Lesson in Love (Swedish: En lektion i kärlek) is a 1954 Swedish comedy film written and directed by Ingmar Bergman. The film is about the marriage of a gynecologist named David and his wife Marianne.",
+  "wiki": "https://en.wikipedia.org/wiki/A_Lesson_in_Love_(1954_film)"
+ },
+ "Real Life|1979": {
+  "summary": "Real Life is a 1979 American mockumentary comedy film starring Albert Brooks (in his directorial debut), who also co-authored the screenplay alongside Monica Johnson and Harry Shearer. It is a spoof of the 1973 reality television program An American Family and portrays a documentary filmmaker named Albert Brooks who attempts to live with and film a dysfunctional family for one full year.",
+  "wiki": "https://en.wikipedia.org/wiki/Real_Life_(1979_film)"
+ },
+ "The Girls|1968": {
+  "summary": "The Girls (Swedish: Flickorna) is a 1968 Swedish-language drama film directed by Mai Zetterling, starring Bibi Andersson, Harriet Andersson and Gunnel Lindblom. It is a feminist reinvention of the ancient Greek play Lysistrata by Aristophanes, and revolves around a theatre group which sets up the play.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Girls_(1968_film)"
+ },
+ "Major Barbara|1941": {
+  "summary": "Major Barbara is a 1941 British film starring Wendy Hiller and Rex Harrison. The film was produced and directed by Gabriel Pascal and edited by David Lean.",
+  "wiki": "https://en.wikipedia.org/wiki/Major_Barbara_(film)"
+ },
+ "The Wicked Lady|1945": {
+  "summary": "The Wicked Lady is a 1945 British costume drama film directed by Leslie Arliss and starring Margaret Lockwood in the title role as a nobleman's wife who becomes a highwaywoman for the excitement. It had one of the largest audiences for a film of its period, with an estimated British attendance of 18.4 million seeing it in cinemas, according to a 2004 ranking of the most popular sound films in…",
+  "wiki": "https://en.wikipedia.org/wiki/The_Wicked_Lady"
+ },
+ "Henry V|1944": {
+  "summary": "Henry V is a 1944 British film adaptation of William Shakespeare's play. The film is directed, co-written, produced by, and stars Laurence Olivier in the title role.",
+  "wiki": "https://en.wikipedia.org/wiki/Henry_V_(1944_film)"
+ },
+ "Love on the Run|1979": {
+  "summary": "Love on the Run (French: L'amour en fuite) is a 1979 French romantic comedy-drama film co-written and directed by François Truffaut, his fifth and final film about the character Antoine Doinel. Told in nonlinear fashion, with frequent flashbacks to the four previous films, it stars Jean-Pierre Léaud, Marie-France Pisier, Claude Jade, Dani and Dorothée.",
+  "wiki": "https://en.wikipedia.org/wiki/Love_on_the_Run_(1979_film)"
+ },
+ "Trafic|1971": {
+  "summary": "Trafic (Traffic) is a 1971 comedy film directed by Jacques Tati. Trafic was the last film to feature Tati's famous character of Monsieur Hulot, and followed the vein of earlier Tati films that lampooned modern society.",
+  "wiki": "https://en.wikipedia.org/wiki/Trafic"
+ },
+ "Morocco|1930": {
+  "summary": "Morocco is a 1930 American pre-Code romantic drama film directed by Josef von Sternberg and starring Gary Cooper, Marlene Dietrich, and Adolphe Menjou. Based on the 1927 novel Amy Jolly (the on-screen credits state: from the play 'Amy Jolly') by Benno Vigny and adapted by Jules Furthman, the film is about a cabaret singer and a Legionnaire who fall in love during the Rif War, and whose…",
+  "wiki": "https://en.wikipedia.org/wiki/Morocco_(film)"
+ },
+ "Daddy Longlegs|2009": {
+  "summary": "Daddy Longlegs is a 2009 American comedy drama film directed by Josh and Benny Safdie, who co-wrote it with Ronald Bronstein. It stars Bronstein, Sage Ranaldo, and Frey Ranaldo.",
+  "wiki": "https://en.wikipedia.org/wiki/Daddy_Longlegs_(2009_film)"
+ },
+ "Magnificent Obsession|1954": {
+  "summary": "Magnificent Obsession is a 1954 American melodrama film directed by Douglas Sirk and starring Jane Wyman, Rock Hudson, and Barbara Rush. It is a remake of the 1935 film, starring Irene Dunne and Robert Taylor.",
+  "wiki": "https://en.wikipedia.org/wiki/Magnificent_Obsession_(1954_film)"
+ },
+ "Blithe Spirit|1945": {
+  "summary": "Blithe Spirit is a 1945 British supernatural black comedy film directed by David Lean. The screenplay by Lean, cinematographer Ronald Neame and associate producer Anthony Havelock-Allan, is based on Noël Coward's 1941 play of the same name, the title of which is derived from the line \"Hail to thee, blithe Spirit!",
+  "wiki": "https://en.wikipedia.org/wiki/Blithe_Spirit_(1945_film)"
+ },
+ "The Rose|1979": {
+  "summary": "The Rose is a 1979 American musical drama film directed by Mark Rydell, and starring Bette Midler, Alan Bates, Frederic Forrest, Harry Dean Stanton, Barry Primus, and David Keith. Loosely based on the life of Janis Joplin, the film follows self-destructive rock star Mary Rose Foster in the late 1960s, who struggles to cope with the pressures of her career and the demands of her ruthless…",
+  "wiki": "https://en.wikipedia.org/wiki/The_Rose_(film)"
+ },
+ "Borderline|1930": {
+  "summary": "Borderline is a 1930 film, written and directed by Kenneth Macpherson and produced by the Pool Group in Territet, Switzerland. The silent film, with English title cards, is primarily noted for its handling of the contentious issue of interracial relationships, using avant-garde experimental film-making techniques.",
+  "wiki": "https://en.wikipedia.org/wiki/Borderline_(1930_film)"
+ },
+ "The Killers|1964": {
+  "summary": "The Killers (also known as Ernest Hemingway's \"The Killers\") is a 1964 American neo-noir crime film directed and produced by Don Siegel, from a screenplay by Gene L. Coon.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Killers_(1964_film)"
+ },
+ "The Hit|1984": {
+  "summary": "The Hit is a 1984 British road crime film directed by Stephen Frears, and starring John Hurt, Terence Stamp, Laura del Sol, and Tim Roth in his film debut. It was Stamp's first starring role in over a decade, and Roth won an Evening Standard Award for Most Promising Newcomer.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Hit_(1984_film)"
+ },
+ "White Dog|1982": {
+  "summary": "White Dog is a 1982 American drama horror film directed by Samuel Fuller and written by Fuller and Curtis Hanson, based on Romain Gary's 1970 novel of the same title. Executive Producers were Edgar J.",
+  "wiki": "https://en.wikipedia.org/wiki/White_Dog_(1982_film)"
+ },
+ "The Devil Is a Woman|1935": {
+  "summary": "The Devil Is a Woman is a 1935 American romantic drama film directed and photographed by Josef von Sternberg from a screenplay by John Dos Passos, based on the 1898 novel The Woman and the Puppet by Pierre Louÿs. The film stars Marlene Dietrich, Lionel Atwill, and Cesar Romero.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Devil_Is_a_Woman_(1935_film)"
+ },
+ "Working Girls|1986": {
+  "summary": "Working Girls is a 1986 American independent drama film, written (with Sandra Kay), produced and directed by Lizzie Borden working with cinematographer Judy Irola. Its plot follows a day in the life of several prostitutes in a Manhattan brothel.",
+  "wiki": "https://en.wikipedia.org/wiki/Working_Girls_(1986_film)"
+ },
+ "The Decameron|1971": {
+  "summary": "The Decameron (Italian: Il Decameron) is a 1971 anthology erotic comedy film written and directed by Pier Paolo Pasolini, based on the 14th-century collection of stories by Giovanni Boccaccio. It is the first film of Pasolini's Trilogy of Life, the others being The Canterbury Tales and Arabian Nights.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Decameron_(film)"
+ },
+ "Dollar|1938": {
+  "summary": "Dollar is a 1938 Swedish comedy film directed by Gustaf Molander and starring Ingrid Bergman, Georg Rydeberg and Tutta Rolf. The film's art direction was by Arne Åkermark.",
+  "wiki": "https://en.wikipedia.org/wiki/Dollar_(film)"
+ },
+ "Cul-de-sac|1966": {
+  "summary": "Cul-de-sac is a 1966 British black comedy psychological thriller film directed by Roman Polanski, written by Polanski and Gérard Brach, and starring Donald Pleasence, Françoise Dorléac, Lionel Stander and Jack MacGowran, with Iain Quarrier, Geoffrey Sumner, Renée Houston, William Franklyn, Marie Kean and Trevor Delaney in supporting roles. It also features Jacqueline Bisset in a small role, in…",
+  "wiki": "https://en.wikipedia.org/wiki/Cul-de-sac_(1966_film)"
+ },
+ "The Most Dangerous Game|1932": {
+  "summary": "The Most Dangerous Game is a 1932 American pre-Code horror film directed by Ernest B. Schoedsack and Irving Pichel, and starring Joel McCrea, Fay Wray and Leslie Banks.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Most_Dangerous_Game_(1932_film)"
+ },
+ "The Mikado|1939": {
+  "summary": "The Mikado is a 1939 British musical comedy film based on Gilbert and Sullivan's 1885 comic opera The Mikado. Directed by [[ Victor Schertzinger]] and shot in Technicolor, the film stars Martyn Green as Ko-Ko, Sydney Granville as Pooh-Bah, the American singer Kenny Baker as Nanki-Poo and Jean Colin as Yum-Yum.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Mikado_(1939_film)"
+ },
+ "I Shot Jesse James|1949": {
+  "summary": "I Shot Jesse James is a 1949 American Western film starring Reed Hadley as Jesse James and John Ireland as Bob Ford. Directed by Samuel Fuller in his debut behind the camera, it portrays the murder of Jesse James by Robert Ford and Robert Ford's life afterwards.",
+  "wiki": "https://en.wikipedia.org/wiki/I_Shot_Jesse_James"
+ },
+ "Something Wild|1961": {
+  "summary": "Something Wild is a 1961 American neo-noir psychological drama film directed by Jack Garfein and starring Carroll Baker, Ralph Meeker, Mildred Dunnock, Jean Stapleton, and Martin Kosleck. It follows a young New York City college student who, after being brutally raped in a Bronx park, is held captive by a mechanic who saves her from committing suicide on the Manhattan Bridge.",
+  "wiki": "https://en.wikipedia.org/wiki/Something_Wild_(1961_film)"
+ },
+ "Deep Cover|1992": {
+  "summary": "Deep Cover is a 1992 American crime film starring Laurence Fishburne as a cop who goes undercover to bring down a Los Angeles drug cartel. It was directed by Bill Duke based on a screenplay by Henry Bean and Michael Tolkin.",
+  "wiki": "https://en.wikipedia.org/wiki/Deep_Cover_(1992_film)"
+ },
+ "Night Games|1966": {
+  "summary": "Night Games (Swedish: Nattlek) is a 1966 Swedish movie directed by Mai Zetterling and starring Ingrid Thulin. The film premiered at the 27th Venice International Film Festival where it was considered so controversial that it was shown to the jury in private.",
+  "wiki": "https://en.wikipedia.org/wiki/Night_Games_(1966_film)"
+ },
+ "Hairspray|1988": {
+  "summary": "Hairspray is a 1988 American comedy film written and directed by John Waters, starring Sonny Bono, Ruth Brown, Divine, Debbie Harry, Ricki Lake in her film debut, and Jerry Stiller, with special appearances by Ric Ocasek and Pia Zadora. Hairspray was a dramatic departure from Waters's earlier works, with a much broader intended audience.",
+  "wiki": "https://en.wikipedia.org/wiki/Hairspray_(1988_film)"
+ },
+ "Monte Carlo|1930": {
+  "summary": "Monte Carlo is a 1930 American pre-Code musical comedy film, directed by Ernst Lubitsch. It co-stars Jack Buchanan as a French Count Rudolph Falliere masquerading as a hairdresser and Jeanette MacDonald as Countess Helene Mara.",
+  "wiki": "https://en.wikipedia.org/wiki/Monte_Carlo_(1930_film)"
+ },
+ "Carnival of Souls|1962": {
+  "summary": "Carnival of Souls is a 1962 American neo-noir psychological horror film produced and directed by Herk Harvey and written by John Clifford from a story by Clifford and Harvey, and starring Candace Hilligoss. Its plot follows Mary Henry, a young woman whose life is disturbed after a car accident.",
+  "wiki": "https://en.wikipedia.org/wiki/Carnival_of_Souls"
+ },
+ "La Bamba|1987": {
+  "summary": "La Bamba is a 1987 American biographical drama film written and directed by Luis Valdez. The film follows the life and short-lived musical career of American Chicano rock and roll star Ritchie Valens.",
+  "wiki": "https://en.wikipedia.org/wiki/La_Bamba_(film)"
+ },
+ "Medea|1969": {
+  "summary": "Medea is a 1969 Italian film written and directed by Pier Paolo Pasolini, based on the ancient myth of Medea. The film stars opera singer Maria Callas in her only film role and is largely a faithful portrayal of the myth of Jason and the Argonauts and the events of Euripides' play Medea.",
+  "wiki": "https://en.wikipedia.org/wiki/Medea_(1969_film)"
+ },
+ "The War of the Worlds|1953": {
+  "summary": "The War of the Worlds (also known in promotional material as H. G.",
+  "wiki": "https://en.wikipedia.org/wiki/The_War_of_the_Worlds_(1953_film)"
+ },
+ "Dressed to Kill|1980": {
+  "summary": "Dressed to Kill is a 1980 American thriller film written and directed by Brian De Palma, and starring Michael Caine, Angie Dickinson and Nancy Allen. It depicts the events leading up to the brutal murder of New York City housewife Kate Miller (Dickinson) before following Liz Blake (Allen), a prostitute who witnesses the crime, and her attempts to solve it with the help of the victim's son…",
+  "wiki": "https://en.wikipedia.org/wiki/Dressed_to_Kill_(1980_film)"
+ },
+ "The Drum|1938": {
+  "summary": "The Drum (released in the U.S. as Drums) is a 1938 British Technicolor film based on the 1937 novel The Drum by A. E.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Drum_(1938_film)"
+ },
+ "1984|1984": {
+  "summary": "Nineteen Eighty-Four (stylized as 1984) is a 1984 British dystopian film written and directed by Michael Radford, based on George Orwell's 1949 novel. Starring John Hurt, Richard Burton, Suzanna Hamilton and Cyril Cusack, it follows the life of Winston Smith (Hurt), a low-ranking civil servant in a war-torn London in Oceania, a totalitarian superstate ruled by Ingsoc and its leader Big Brother.",
+  "wiki": "https://en.wikipedia.org/wiki/Nineteen_Eighty-Four_(1984_film)"
+ },
+ "Mother|1996": {
+  "summary": "Mother is a 1996 American comedy-drama film directed by Albert Brooks, co-written by Brooks with Monica Johnson, and starring Brooks and Debbie Reynolds as son and mother. Brooks portrays a novelist who moves back home with his mother after his second divorce, hoping to determine why all his relationships with women were unsuccessful.",
+  "wiki": "https://en.wikipedia.org/wiki/Mother_(1996_film)"
+ },
+ "Nightmare Alley|2021": {
+  "summary": "Nightmare Alley is a 2021 neo-noir psychological thriller film co-written and directed by Guillermo del Toro, and based on the 1946 novel of the same name by William Lindsay Gresham. A co-production between Searchlight Pictures and Double Dare You Productions, the film stars Bradley Cooper as a charming and ambitious carnival worker with a mysterious past who takes big risks to boost his career.",
+  "wiki": "https://en.wikipedia.org/wiki/Nightmare_Alley_(2021_film)"
+ },
+ "Testament|1983": {
+  "summary": "Testament is a 1983 American post-apocalyptic drama film co-produced and directed by Lynne Littman, written by John Sacret Young, and starring Jane Alexander, William Devane, Leon Ames, Ross Harris, Lukas Haas, Roxana Zal, Kevin Costner, and Rebecca De Mornay. Based on Carol Amen's 1981 short story \"The Last Testament\", the film focuses on the disintegration of a small suburban community in…",
+  "wiki": "https://en.wikipedia.org/wiki/Testament_(1983_film)"
+ },
+ "Homicide|1991": {
+  "summary": "Homicide is a 1991 American crime drama film written and directed by David Mamet. The film's cast includes Joe Mantegna, William H.",
+  "wiki": "https://en.wikipedia.org/wiki/Homicide_(1991_film)"
+ },
+ "The Emperor Jones|1933": {
+  "summary": "The Emperor Jones is a 1933 American pre-Code film adaptation of Eugene O'Neill's 1920 play of the same title, directed by iconoclast Dudley Murphy, written for the screen by playwright DuBose Heyward and starring Paul Robeson in the title role (a role he played onstage, both in the US and UK), and co-starring Dudley Digges, Frank H. Wilson, Fredi Washington and Ruby Elzy.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Emperor_Jones_(film)"
+ },
+ "The Four Musketeers|1974": {
+  "summary": "The Four Musketeers (also known as The Four Musketeers: The Revenge of Milady) is a 1974 British swashbuckler film and sequel to the 1973 film The Three Musketeers, covering the second half of Dumas' 1844 novel The Three Musketeers. Fifteen years after completion of The Four Musketeers, much of the cast and crew reassembled to film The Return of the Musketeers (1989), loosely based on Dumas'…",
+  "wiki": "https://en.wikipedia.org/wiki/The_Four_Musketeers_(1974_film)"
+ },
+ "Weekend|1967": {
+  "summary": "Weekend (French: Week-end) is a 1967 postmodern black comedy film written and directed by Jean-Luc Godard, based on Julio Cortázar's short story \"La autopista del Sur\". It stars mainstream French TV stars Mireille Darc and Jean Yanne.",
+  "wiki": "https://en.wikipedia.org/wiki/Weekend_(1967_film)"
+ },
+ "Time|2020": {
+  "summary": "Time is a 2020 American documentary film produced and directed by Garrett Bradley. It follows Sibil Fox Richardson and her fight for the release of her husband, Rob, who was serving a 60-year prison sentence for engaging in an armed bank robbery.",
+  "wiki": "https://en.wikipedia.org/wiki/Time_(2020_film)"
+ },
+ "Under the Volcano|1984": {
+  "summary": "Under the Volcano is a 1984 drama film directed by John Huston, based on Malcolm Lowry's semi-autobiographical 1947 novel. It stars Albert Finney, Jacqueline Bisset, and Anthony Andrews, and features Ignacio López Tarso, Katy Jurado and Emilio Fernández in supporting roles.",
+  "wiki": "https://en.wikipedia.org/wiki/Under_the_Volcano_(1984_film)"
+ },
+ "Something Wild|1986": {
+  "summary": "Something Wild is a 1986 American comedy thriller film directed by Jonathan Demme and written by E. Max Frye.",
+  "wiki": "https://en.wikipedia.org/wiki/Something_Wild_(1986_film)"
+ },
+ "Body and Soul|1925": {
+  "summary": "Body and Soul is a 1925 race film produced, written, directed, and distributed by Oscar Micheaux and starring Paul Robeson in his motion picture debut. In 2019, the film was selected by the Library of Congress for inclusion in the National Film Registry for being \"culturally, historically, or aesthetically significant\".",
+  "wiki": "https://en.wikipedia.org/wiki/Body_and_Soul_(1925_film)"
+ },
+ "Mississippi Masala|1991": {
+  "summary": "Mississippi Masala is a 1991 romantic drama film directed by Mira Nair, based upon a screenplay by Sooni Taraporevala, starring Denzel Washington, Sarita Choudhury, and Roshan Seth. Set primarily in rural Mississippi, the film explores an interracial romance between an African-American man and an Indian-American woman.",
+  "wiki": "https://en.wikipedia.org/wiki/Mississippi_Masala"
+ },
+ "Port of Call|1948": {
+  "summary": "Port of Call (Swedish: Hamnstad, lit. 'Port Town'; also known as Harbour City) is a 1948 Swedish drama film written and directed by Ingmar Bergman.",
+  "wiki": "https://en.wikipedia.org/wiki/Port_of_Call_(1948_film)"
+ },
+ "Misericordia|2024": {
+  "summary": "Misericordia (French: Miséricorde) is a 2024 black comedy thriller film written and directed by Alain Guiraudie, partially adapted from his 2021 novel Rabalaïre. It stars Félix Kysyl and Catherine Frot.",
+  "wiki": "https://en.wikipedia.org/wiki/Misericordia_(2024_film)"
+ },
+ "Jungle Book|1942": {
+  "summary": "Jungle Book or Rudyard Kipling's Jungle Book is a 1942 American action-adventure film in Technicolor independently produced by the Korda brothers and loosely adapted from Rudyard Kipling's 1894 story collection The Jungle Book. The story centers on Mowgli, a feral youth who is kidnapped by villagers who are cruel to the jungle animals as they attempt to steal a dead king's cursed treasure.",
+  "wiki": "https://en.wikipedia.org/wiki/Rudyard_Kipling%27s_Jungle_Book"
+ },
+ "Androcles and the Lion|1952": {
+  "summary": "Androcles and the Lion is a 1952 RKO Pictures film produced by Gabriel Pascal from the 1912 George Bernard Shaw play of the same name. It was Pascal's last film, made two years after the death of Shaw, his longtime friend and mentor, and two years before Pascal's own death.",
+  "wiki": "https://en.wikipedia.org/wiki/Androcles_and_the_Lion_(1952_film)"
+ },
+ "Sweetie|1989": {
+  "summary": "Sweetie is a 1989 Australian black comedy drama film directed by Jane Campion, and starring Genevieve Lemon, Karen Colston, Tom Lycos, and Jon Darling. Co-written by Campion and Gerard Lee, the film documents the contentious and chaotic relationships among a woman in her twenties, her parents, and her emotionally unstable sister.",
+  "wiki": "https://en.wikipedia.org/wiki/Sweetie_(1989_film)"
+ },
+ "Sanshiro Sugata|1943": {
+  "summary": "Sanshiro Sugata (Japanese: 姿三四郎, Hepburn: Sugata Sanshirō; also known as Judo Saga) is a 1943 Japanese martial arts drama film written and directed by Akira Kurosawa, his feature directorial debut. It follows the story of the title character, played by Susumu Fujita, a talented though willful youth who learns discipline and martial prowess through his study of judo.",
+  "wiki": "https://en.wikipedia.org/wiki/Sanshiro_Sugata"
+ },
+ "Thirst|1949": {
+  "summary": "Thirst (Swedish: Törst) is a 1949 Swedish drama film directed by Ingmar Bergman. It was released as Three Strange Loves in the United Kingdom.",
+  "wiki": "https://en.wikipedia.org/wiki/Thirst_(1949_film)"
+ },
+ "Lord of the Flies|1963": {
+  "summary": "Lord of the Flies is a 1963 British survival drama film written for the screen and directed by Peter Brook, based on the 1954 novel by William Golding. It follows 30 schoolboys who are marooned on an island where the behaviour of the majority degenerates into savagery.",
+  "wiki": "https://en.wikipedia.org/wiki/Lord_of_the_Flies_(1963_film)"
+ },
+ "The Innocent|2022": {
+  "summary": "The Innocent (French: L'Innocent) is a 2022 French crime comedy film directed by Louis Garrel, from a screenplay by Garrel, Tanguy Viel and Naïla Guiguet. It stars Roschdy Zem, Anouk Grinberg, Noémie Merlant and Garrel.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Innocent_(2022_film)"
+ },
+ "Sisters|1973": {
+  "summary": "Sisters (released as Blood Sisters in the United Kingdom) is a 1972 American neo-noir psychological horror film directed by Brian De Palma and starring Margot Kidder, Jennifer Salt, and Charles Durning. It follows Dominique Blanchion, the separated conjoined twin of a French Canadian model, Danielle Breton, who is suspected of having committed a brutal murder witnessed by Grace Collier, a…",
+  "wiki": "https://en.wikipedia.org/wiki/Sisters_(1972_film)"
+ },
+ "Repo Man|1984": {
+  "summary": "Repo Man is a 1984 American science fiction black comedy film written and directed by Alex Cox in his directorial debut. It stars Harry Dean Stanton and Emilio Estevez, with Tracey Walter, Olivia Barash, Sy Richardson, Vonetta McGee, Fox Harris, and Dick Rude among the supporting cast.",
+  "wiki": "https://en.wikipedia.org/wiki/Repo_Man_(film)"
+ },
+ "The Touch|1971": {
+  "summary": "The Touch (Swedish: Beröringen) is a 1971 romantic drama film directed and written by Ingmar Bergman and starring Max von Sydow, Bibi Andersson, Elliott Gould, and Sheila Reid. The film tells the story of an affair between a married woman and an impetuous foreigner.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Touch_(1971_film)"
+ },
+ "Every Man for Himself|1980": {
+  "summary": "Every Man for Himself (French: Sauve qui peut (la vie)) is a 1980 drama film directed, co-written and co-produced by Jean-Luc Godard that is set in and was filmed in Switzerland. It stars Jacques Dutronc, Isabelle Huppert, and Nathalie Baye, with a score by Gabriel Yared.",
+  "wiki": "https://en.wikipedia.org/wiki/Every_Man_for_Himself_(1980_film)"
+ },
+ "Risky Business|1983": {
+  "summary": "Risky Business is a 1983 American coming-of-age teen comedy film written and directed by Paul Brickman (in his directorial debut) and starring Tom Cruise and Rebecca De Mornay. It follows the sexual exploits of high school senior Joel Goodson (Cruise), who is staying home alone during his parents' vacation trip and meets a call girl named Lana (De Mornay).",
+  "wiki": "https://en.wikipedia.org/wiki/Risky_Business"
+ },
+ "Beyond the Law|1968": {
+  "summary": "Beyond the Law may refer to: Beyond the Law (1918 film), an American western film directed by Theodore Marston Beyond the Law (1930 film), an American western film directed by J. P.",
+  "wiki": "https://en.wikipedia.org/wiki/Beyond_the_Law"
+ },
+ "Crisis|1946": {
+  "summary": "Crisis (Swedish: Kris) is a 1946 Swedish melodrama film written and directed by Ingmar Bergman (in his directorial debut), based on the Danish radio play Moderhjertet (translated as The Mother Animal, A Mother's Heart, The Mother Creature, and The Maternal Instinct) by Leck Fischer.",
+  "wiki": "https://en.wikipedia.org/wiki/Crisis_(1946_film)"
+ },
+ "The Man Who Knew Too Much|1934": {
+  "summary": "The Man Who Knew Too Much is a 1934 British spy thriller film directed by Alfred Hitchcock for Gaumont British. Starring Leslie Banks and Peter Lorre, it was one of the most successful and critically acclaimed films of Hitchcock's British period.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Man_Who_Knew_Too_Much_(1934_film)"
+ },
+ "La Llorona|2019": {
+  "summary": "La Llorona ([la ʝoˈɾona]), also known as The Weeping Woman, is a 2019 Guatemalan horror film co-written, directed, co-produced, and co-edited by Jayro Bustamante.",
+  "wiki": "https://en.wikipedia.org/wiki/La_Llorona_(2019_film)"
+ },
+ "Arabian Nights|1974": {
+  "summary": "Arabian Nights (Italian: Il fiore delle Mille e una notte, lit. 'The Flower of the One Thousand and One Nights') is a 1974 erotic fantasy comedy anthology film directed by Pier Paolo Pasolini.",
+  "wiki": "https://en.wikipedia.org/wiki/Arabian_Nights_(1974_film)"
+ },
+ "Last Summer|2023": {
+  "summary": "Last Summer (French: L'Été dernier) is a 2023 French erotic drama film directed by Catherine Breillat, from a screenplay written by Breillat in collaboration with Pascal Bonitzer. It is a remake of the 2019 Danish film Queen of Hearts.",
+  "wiki": "https://en.wikipedia.org/wiki/Last_Summer_(2023_film)"
+ },
+ "Bergman Island|2021": {
+  "summary": "Bergman Island is a 2021 romantic drama film written and directed by Mia Hansen-Løve. It stars Vicky Krieps, Tim Roth, Mia Wasikowska and Anders Danielsen Lie.",
+  "wiki": "https://en.wikipedia.org/wiki/Bergman_Island_(2021_film)"
+ },
+ "Nowhere|1997": {
+  "summary": "Nowhere is a 1997 surrealist drama film written and directed by Gregg Araki. Described by Araki as \"Beverly Hills, 90210 on acid\", the film follows a day in the lives of a group of Los Angeles college students and the strange lives that they lead.",
+  "wiki": "https://en.wikipedia.org/wiki/Nowhere_(1997_film)"
+ },
+ "The New World|2005": {
+  "summary": "The New World is a 2005 historical romantic drama film written and directed by Terrence Malick, depicting the founding of the Jamestown, Virginia, settlement and inspired by the historical figures Captain John Smith, Pocahontas of the Powhatan tribe, and Englishman John Rolfe. It is the fourth feature film written and directed by Malick.",
+  "wiki": "https://en.wikipedia.org/wiki/The_New_World_(2005_film)"
+ },
+ "Parade|1974": {
+  "summary": "Parade is a French comedy film and was the final film directed by Jacques Tati. Parade was made for Swedish television in 1974 and featured Tati as a clown in a circus.",
+  "wiki": "https://en.wikipedia.org/wiki/Parade_(1974_film)"
+ },
+ "Genocide|1968": {
+  "summary": "Genocide (Japanese: 昆虫大戦争, Hepburn: Konchu daisenso; lit. 'Great Insect War'), also known as War of the Insects, is a 1968 Japanese science fiction horror film directed by Kazui Nihonmatsu.",
+  "wiki": "https://en.wikipedia.org/wiki/Genocide_(1968_film)"
+ },
+ "Kicking and Screaming|1995": {
+  "summary": "Kicking and Screaming is a 1995 American romantic comedy-drama film written and directed by Noah Baumbach in his feature directorial debut. The film stars Josh Hamilton, Olivia d'Abo, Parker Posey, Chris Eigeman, and Eric Stoltz.",
+  "wiki": "https://en.wikipedia.org/wiki/Kicking_and_Screaming_(1995_film)"
+ },
+ "Armageddon|1998": {
+  "summary": "Armageddon is a 1998 American science fiction disaster film directed by Michael Bay and co-produced by Jerry Bruckheimer. The film follows a group of blue-collar deep-core drillers sent by NASA to destroy a gigantic asteroid, which is the size of Texas, on a collision course with Earth.",
+  "wiki": "https://en.wikipedia.org/wiki/Armageddon_(1998_film)"
+ },
+ "Caesar and Cleopatra|1945": {
+  "summary": "Caesar and Cleopatra is a 1945 British historical romantic film directed by Gabriel Pascal which was a film adaptation of George Bernard Shaw's 1901 play of the same title. The film stars Vivien Leigh and Claude Rains in the title roles.",
+  "wiki": "https://en.wikipedia.org/wiki/Caesar_and_Cleopatra_(film)"
+ },
+ "Shaft|1971": {
+  "summary": "Shaft is a 1971 American blaxploitation crime action thriller film directed by Gordon Parks and written by Ernest Tidyman and John D. F.",
+  "wiki": "https://en.wikipedia.org/wiki/Shaft_(1971_film)"
+ },
+ "The Man Who Fell to Earth|1976": {
+  "summary": "The Man Who Fell to Earth is a 1976 British science fantasy drama film directed by Nicolas Roeg and adapted by Paul Mayersberg. Based on Walter Tevis's 1963 novel, the film follows an extraterrestrial named Thomas Jerome Newton (David Bowie) who crash-lands on Earth seeking a way to ship water to his planet, which is suffering from a severe drought, but finds himself at the mercy of human…",
+  "wiki": "https://en.wikipedia.org/wiki/The_Man_Who_Fell_to_Earth"
+ },
+ "King Lear|1987": {
+  "summary": "King Lear is a 1987 film directed by Jean-Luc Godard and produced by Cannon Films, an adaptation of William Shakespeare's play in the avant-garde style of French New Wave cinema. The script was originally assigned to Norman Mailer but Mailer's text was not used.",
+  "wiki": "https://en.wikipedia.org/wiki/King_Lear_(1987_film)"
+ },
+ "House Party|1990": {
+  "summary": "House Party is a 1990 American comedy film directed by Reginald Hudlin. It stars Christopher \"Kid\" Reid and Christopher \"Play\" Martin of the hip hop duo Kid 'n Play, B-Fine of Full Force, Martin Lawrence and Robin Harris.",
+  "wiki": "https://en.wikipedia.org/wiki/House_Party_(1990_film)"
+ },
+ "Baby Boy|2001": {
+  "summary": "Baby Boy is a 2001 American coming-of-age hood drama film directed, written and produced by John Singleton, and starring Tyrese Gibson, Snoop Dogg, Ving Rhames, Omar Gooding, A.J. Johnson and Taraji P.",
+  "wiki": "https://en.wikipedia.org/wiki/Baby_Boy_(film)"
+ },
+ "Made in U.S.A|1966": {
+  "summary": "Made in U.S.A is a 1966 French crime comedy film written and directed by Jean-Luc Godard, and starring Anna Karina, László Szabó, Jean-Pierre Léaud, Marianne Faithfull, Yves Afonso, and Jean-Claude Bouillon. It was a loose and unauthorized adaptation of the 1965 novel The Jugger by Richard Stark (an alias of Donald E.",
+  "wiki": "https://en.wikipedia.org/wiki/Made_in_U.S.A._(1966_film)"
+ },
+ "The Beast|2023": {
+  "summary": "The Beast (French: La Bête) is a 2023 science fiction romantic drama film directed and written by Bertrand Bonello from a story he co-wrote with Guillaume Bréaud and Benjamin Charbit. A co-production between France and Canada, the film is loosely based on Henry James's 1903 novella The Beast in the Jungle.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Beast_(2023_film)"
+ },
+ "And God Created Woman|1956": {
+  "summary": "And God Created Woman (French: Et Dieu... créa la femme) is a 1956 French romantic drama film directed by Roger Vadim and starring Brigitte Bardot, his then wife. Though not her first film, it is widely recognized as the vehicle that launched Bardot into the public spotlight and immediately created her \"sex kitten\" persona, making her an overnight sensation.",
+  "wiki": "https://en.wikipedia.org/wiki/And_God_Created_Woman_(1956_film)"
+ },
+ "A Safe Place|1971": {
+  "summary": "A Safe Place is a 1971 American drama film written and directed by Henry Jaglom and starring Tuesday Weld, Orson Welles and Jack Nicholson.",
+  "wiki": "https://en.wikipedia.org/wiki/A_Safe_Place"
+ },
+ "Jubilee|1978": {
+  "summary": "Jubilee is a 1978 British drama film directed by Derek Jarman. It stars Jenny Runacre, Ian Charleson, Nell Campbell, Hermine Demoriane and a host of punk rockers.",
+  "wiki": "https://en.wikipedia.org/wiki/Jubilee_(1978_film)"
+ },
+ "Black Moon|1975": {
+  "summary": "Black Moon is a 1975 Franco-German experimental fantasy horror film directed by Louis Malle and starring Cathryn Harrison, Joe Dallesandro, Therese Giehse and Alexandra Stewart. Though produced in France, its dialogue is in both French and English.",
+  "wiki": "https://en.wikipedia.org/wiki/Black_Moon_(1975_film)"
+ },
+ "Tom Jones|1963": {
+  "summary": "Tom Jones is a 1963 British period comedy film, an adaptation of Henry Fielding's classic 1749 novel The History of Tom Jones, a Foundling. It is directed by Tony Richardson from a screenplay written by John Osborne, and stars Albert Finney as the titular character.",
+  "wiki": "https://en.wikipedia.org/wiki/Tom_Jones_(1963_film)"
+ },
+ "Crash|1996": {
+  "summary": "Crash is a 1996 Canadian erotic thriller film written, produced and directed by David Cronenberg, based on J. G.",
+  "wiki": "https://en.wikipedia.org/wiki/Crash_(1996_film)"
+ },
+ "The Lure|2015": {
+  "summary": "The Lure (Polish: Córki dancingu, lit. 'Daughters of Dancing') is a 2015 Polish musical horror film directed by Agnieszka Smoczyńska and written by Robert Bolesto.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Lure_(2015_film)"
+ },
+ "The Blob|1958": {
+  "summary": "The Blob is a 1958 American science fiction horror film directed by Irvin S. Yeaworth Jr. from a screenplay by Theodore Simonson and Kate Phillips, based on an idea by Irving H.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Blob"
+ },
+ "Birth|2004": {
+  "summary": "Birth is a 2004 psychological drama mystery film co-written and directed by Jonathan Glazer, and starring Nicole Kidman, Lauren Bacall, Cameron Bright, Danny Huston, Arliss Howard, Peter Stormare, Ted Levine, Anne Heche, and Cara Seymour. Its plot follows a woman who becomes convinced that her deceased husband has been reincarnated in a ten-year-old boy.",
+  "wiki": "https://en.wikipedia.org/wiki/Birth_(2004_film)"
+ },
+ "Poetic Justice|1993": {
+  "summary": "Poetic Justice is a 1993 American romantic crime drama film written and directed by John Singleton. Its plot follows a poet (played by Janet Jackson), mourning the loss of her boyfriend from gun violence, who goes on a road trip from South Los Angeles to Oakland on a mail truck, along with her friend (played by Regina King) and two postal workers (played by Tupac Shakur and Joe Torry), in…",
+  "wiki": "https://en.wikipedia.org/wiki/Poetic_Justice_(film)"
+ },
+ "Jabberwocky|1977": {
+  "summary": "Jabberwocky is a 1977 British fantasy comedy film co-written and directed by Terry Gilliam. Jabberwocky stars Michael Palin as Dennis, a cooper's apprentice, who is forced through clumsy, often slapstick misfortunes to hunt a terrible dragon after the death of his father.",
+  "wiki": "https://en.wikipedia.org/wiki/Jabberwocky_(1977_film)"
+ },
+ "Equinox|1970": {
+  "summary": "Equinox is a 1970 American supernatural horror film directed by Jack Woods, and starring Edward Connell, Barbara Hewitt, Frank Bonner and Robin Christopher. Though uncredited, producer Dennis Muren also served as a second director.",
+  "wiki": "https://en.wikipedia.org/wiki/Equinox_(1970_film)"
+ },
+ "Bergman Island|2006": {
+  "summary": "Bergman Island is a 2004 documentary film directed by Marie Nyreröd and starring Ingmar Bergman. It screened at various film festivals, including the Gothenburg Film Festival.",
+  "wiki": "https://en.wikipedia.org/wiki/Bergman_Island_(2004_film)"
+ },
+ "Che|2008": {
+  "summary": "Che is a two-part 2008 epic biographical film about the Argentine Marxist revolutionary Ernesto \"Che\" Guevara, directed by Steven Soderbergh. Rather than follow a standard chronological order, the films offer an oblique series of interspersed moments along the overall timeline.",
+  "wiki": "https://en.wikipedia.org/wiki/Che_(2008_film)"
+ },
+ "Red, White and Blue|2020": {
+  "summary": "Red, White and Blue is a 2020 historical drama film directed by Steve McQueen and co-written by McQueen and Courttia Newland. It stars John Boyega as Leroy Logan, an officer in the London Metropolitan Police who founded the Black Police Association and attempted to reform the police force from within.",
+  "wiki": "https://en.wikipedia.org/wiki/Red,_White_and_Blue_(2020_film)"
+ },
+ "Lovers Rock|2020": {
+  "summary": "Lovers Rock is a 2020 romance film directed by Steve McQueen and co-written by McQueen and Courttia Newland. It stars Micheal Ward and Amarah-Jae St.",
+  "wiki": "https://en.wikipedia.org/wiki/Lovers_Rock_(2020_film)"
+ },
+ "Paths of Glory|1957": {
+  "summary": "Paths of Glory is a 1957 American anti-war film directed by Stanley Kubrick, from a screenplay he co-wrote with Calder Willingham and Jim Thompson. It is adapted from the 1935 novel of the same name by Humphrey Cobb, which in turn was based on the Souain corporals affair during World War I.",
+  "wiki": "https://en.wikipedia.org/wiki/Paths_of_Glory"
+ },
+ "Woman in the Dunes|1964": {
+  "summary": "Woman in the Dunes or Woman of the Dunes (Japanese: 砂の女, Hepburn: Suna No Onna; \"Sand Woman\") is a 1964 Japanese drama film directed by Hiroshi Teshigahara and starring Eiji Okada, Kyōko Kishida, and Kōji Mitsui. Associated with the Japanese New Wave, it received widespread critical acclaim and was nominated for two Academy Awards.",
+  "wiki": "https://en.wikipedia.org/wiki/Woman_in_the_Dunes"
+ },
+ "The Great Escape|1963": {
+  "summary": "The Great Escape is a 1963 American epic war adventure film starring Steve McQueen, James Garner and Richard Attenborough and featuring James Donald, Charles Bronson, Donald Pleasence, James Coburn, Hannes Messemer, David McCallum, Gordon Jackson, John Leyton and Angus Lennie. It was filmed in Panavision, and its musical score was composed by Elmer Bernstein.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Great_Escape_(film)"
+ },
+ "All About Eve|1950": {
+  "summary": "All About Eve is a 1950 American drama film written and directed by Joseph L. Mankiewicz, and produced by Darryl F.",
+  "wiki": "https://en.wikipedia.org/wiki/All_About_Eve"
+ },
+ "Yojimbo|1961": {
+  "summary": "Yojimbo (Japanese: 用心棒, Hepburn: Yōjinbō; lit. Bodyguard) is a 1961 Japanese jidaigeki film directed by Akira Kurosawa, who also co-wrote the screenplay and was one of the producers.",
+  "wiki": "https://en.wikipedia.org/wiki/Yojimbo"
+ },
+ "The Grand Budapest Hotel|2014": {
+  "summary": "The Grand Budapest Hotel is a 2014 comedy-drama film written and directed by Wes Anderson. The film's seventeen-actor ensemble cast is led by Ralph Fiennes as Monsieur Gustave H., famed concierge of a twentieth-century mountainside resort in the fictional country of Zubrowka.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Grand_Budapest_Hotel"
+ },
+ "Trainspotting|1996": {
+  "summary": "Trainspotting is a 1996 British black comedy drama film directed by Danny Boyle, and starring Ewan McGregor, Ewen Bremner, Jonny Lee Miller, Kevin McKidd, Robert Carlyle and Kelly Macdonald in her film debut. It is written in English and Scots.",
+  "wiki": "https://en.wikipedia.org/wiki/Trainspotting_(film)"
+ },
+ "Before Sunset|2004": {
+  "summary": "Before Sunset is a 2004 American romantic drama film directed by Richard Linklater, who co-wrote the screenplay with Ethan Hawke and Julie Delpy, from a story by Linklater and Kim Krizan. It is the first film by Warner Independent Pictures.",
+  "wiki": "https://en.wikipedia.org/wiki/Before_Sunset"
+ },
+ "The Third Man|1949": {
+  "summary": "The Third Man is a 1949 film noir directed by Carol Reed, written by Graham Greene, and starring Joseph Cotten, Alida Valli, Orson Welles and Trevor Howard. Set in post-World War II Allied-occupied Vienna, the film centres on American writer Holly Martins (Cotten), who arrives in the city to accept a job with his friend Harry Lime (Welles), only to learn that he has died.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Third_Man"
+ },
+ "Paris Is Burning|1990": {
+  "summary": "Paris Is Burning is a 1990 American documentary film directed by Jennie Livingston. Filmed over a period of seven years from the mid-to-late 1980s, it chronicles the ball culture of New York City and the African-American, Latino, gay and transgender communities involved in it.",
+  "wiki": "https://en.wikipedia.org/wiki/Paris_Is_Burning_(film)"
+ },
+ "Paris, Texas|1984": {
+  "summary": "Paris, Texas is a 1984 drama road film directed by Wim Wenders, co-written by Sam Shepard and L. M.",
+  "wiki": "https://en.wikipedia.org/wiki/Paris,_Texas_(film)"
+ },
+ "Wild Strawberries|1957": {
+  "summary": "Wild Strawberries is a 1957 Swedish road drama film written and directed by Ingmar Bergman. The original Swedish title is Smultronstället, which literally means \"the wild strawberry patch\" but idiomatically signifies a hidden gem of a place, often with personal or sentimental value, and not widely known.",
+  "wiki": "https://en.wikipedia.org/wiki/Wild_Strawberries_(film)"
+ },
+ "Aparajito|1956": {
+  "summary": "Aparajito (pronounced [ɔpɔradʒito] Ôporajito; The Unvanquished) is a 1956 Indian Bengali-language drama film written and directed by Satyajit Ray, and is the second part of The Apu Trilogy. It is an adaptation of the last part of Bibhutibhushan Bannerjee's novel Pather Panchali and the first part of his followup novel Aparajito.",
+  "wiki": "https://en.wikipedia.org/wiki/Aparajito"
+ },
+ "The Battle of Algiers|1966": {
+  "summary": "The Battle of Algiers (French: La Bataille d'Alger; Italian: La battaglia di Algeri; Arabic: معركة الجزائر, romanized: Maʿrakat al-Jazāʾir) is a 1966 Italian-Algerian war film co-written and directed by Gillo Pontecorvo. It is based on action undertaken by rebels during the Algerian War (1954–1962) against the French government in North Africa, the most prominent being the eponymous Battle of…",
+  "wiki": "https://en.wikipedia.org/wiki/The_Battle_of_Algiers"
+ },
+ "Paper Moon|1973": {
+  "summary": "Paper Moon is a 1973 American road comedy-drama film directed by Peter Bogdanovich and released by Paramount Pictures. Screenwriter Alvin Sargent adapted the script from the 1971 novel Addie Pray by Joe David Brown.",
+  "wiki": "https://en.wikipedia.org/wiki/Paper_Moon_(film)"
+ },
+ "Farewell My Concubine|1993": {
+  "summary": "Farewell My Concubine (Chinese: 霸王别姬, lit. 'The Hegemon-King Bids Farewell to His Concubine') is a 1993 epic historical drama film, directed by Chen Kaige, starring Leslie Cheung, Gong Li and Zhang Fengyi.",
+  "wiki": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)"
+ },
+ "Ugetsu|1953": {
+  "summary": "Ugetsu (雨月物語, Ugetsu Monogatari, lit. \"Rain-moon tales\") is a 1953 Japanese period fantasy film directed by Kenji Mizoguchi starring Masayuki Mori and Machiko Kyō.",
+  "wiki": "https://en.wikipedia.org/wiki/Ugetsu"
+ },
+ "The Graduate|1967": {
+  "summary": "The Graduate is a 1967 American independent romantic comedy-drama film directed by Mike Nichols and written by Buck Henry and Calder Willingham, based on the 1963 novella by Charles Webb. It stars Dustin Hoffman as Benjamin Braddock, a recent college graduate who is seduced by an older married woman, Mrs.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Graduate"
+ },
+ "A Face in the Crowd|1957": {
+  "summary": "A Face in the Crowd is a 1957 American satirical drama film directed by Elia Kazan and starring Andy Griffith (in his film debut), Patricia Neal, and Walter Matthau. The screenplay by Budd Schulberg is based on his short story \"Your Arkansas Traveler\" from the 1953 collection Some Faces in the Crowd.",
+  "wiki": "https://en.wikipedia.org/wiki/A_Face_in_the_Crowd_(film)"
+ },
+ "The Night of the Hunter|1955": {
+  "summary": "The Night of the Hunter is a 1955 American Southern Gothic horror-thriller film directed by Charles Laughton and starring Robert Mitchum, Shelley Winters and Lillian Gish. The screenplay by James Agee was based on the 1953 novel by Davis Grubb.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Night_of_the_Hunter_(film)"
+ },
+ "The Celebration|1998": {
+  "summary": "The Celebration (Danish: Festen) is a 1998 Danish black comedy-drama film directed by Thomas Vinterberg and produced by Nimbus Film. It tells the story of a family gathering to celebrate their patriarch's 60th birthday, during which a family secret is revealed.",
+  "wiki": "https://en.wikipedia.org/wiki/The_Celebration"
+ },
+ "Secrets & Lies|1996": {
+  "summary": "Secrets & Lies is a 1996 comedy-drama film written and directed by Mike Leigh. Led by an ensemble cast consisting of many Leigh regulars, it focuses on a dysfunctional family whose relations are thrown into further chaos after Cynthia (Brenda Blethyn) is contacted by her adult daughter Hortense (Marianne Jean-Baptiste), who was put up for adoption at birth and wishes to connect with her birth…",
+  "wiki": "https://en.wikipedia.org/wiki/Secrets_%26_Lies_(film)"
+ },
+ "Grand Illusion|1937": {
+  "summary": "La Grande Illusion (commonly known in English as \"The Grand Illusion\") is a 1937 French war drama film directed by Jean Renoir, who co-wrote the screenplay with Charles Spaak. The story concerns class relationships among a small group of French officers who are German prisoners of war during World War I and are plotting an escape.",
+  "wiki": "https://en.wikipedia.org/wiki/La_Grande_Illusion"
+ },
+ "Day for Night|1973": {
+  "summary": "Day for Night (French: La Nuit américaine, lit. 'American Night') is a 1973 romantic comedy-drama film co-written and directed by François Truffaut.",
+  "wiki": "https://en.wikipedia.org/wiki/Day_for_Night"
+ },
+ "Berlin Alexanderplatz|1980": {
+  "summary": "Berlin Alexanderplatz can refer to: Berlin Alexanderplatz, a 1929 novel by Alfred Döblin Berlin-Alexanderplatz (1931 film) Berlin Alexanderplatz (2020 film) Berlin Alexanderplatz (miniseries), a 1980 TV serial Berlin Alexanderplatz station, a railway station",
+  "wiki": "https://en.wikipedia.org/wiki/Berlin_Alexanderplatz_(disambiguation)"
+ },
+ "Crumb|1995": {
+  "summary": "Crumb is a 1994 American documentary film about the noted underground cartoonist R. Crumb and his family (including his two brothers) and his outlook on life.",
+  "wiki": "https://en.wikipedia.org/wiki/Crumb_(film)"
+ },
+ "Hearts and Minds|1974": {
+  "summary": "Hearts and Minds is a 1974 American documentary film about the Vietnam War directed by Peter Davis. The film's title is based on a quote from President Lyndon B.",
+  "wiki": "https://en.wikipedia.org/wiki/Hearts_and_Minds_(film)"
+ },
+ "Mulholland Dr.|2001": {
+  "summary": "Mulholland Drive is a 2001 mystery film written and directed by David Lynch. Its narrative is characterized by surrealist and neo-noir elements, and follows an aspiring actress (Naomi Watts) newly arrived in Los Angeles, where she befriends a car crash victim (Laura Harring) who is suffering from amnesia.",
+  "wiki": "https://en.wikipedia.org/wiki/Mulholland_Drive_(film)"
+ },
+ "Fantastic Mr. Fox|2009": {
+  "summary": "Fantastic Mr. Fox is a 2009 stop-motion animated adventure comedy film directed by Wes Anderson, who co-wrote it with Noah Baumbach, based on the 1970 novel by Roald Dahl.",
+  "wiki": "https://en.wikipedia.org/wiki/Fantastic_Mr._Fox_(film)"
  }
 }
