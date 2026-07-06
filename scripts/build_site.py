@@ -16,6 +16,7 @@ def load(name):
 summaries = load("summaries.json")     # EN + AR from Wikipedia
 ar = load("summaries_ar.json")         # AR from ar.wikipedia / machine translation
 tmdb = load("tmdb.json")               # EN + AR overviews from TMDB
+omdb = load("omdb.json")               # Rotten Tomatoes + Metacritic scores
 
 # Source priority — English: Wikipedia intro (encyclopedic) then TMDB overview.
 # Arabic: TMDB official overview, then ar.wikipedia intro, then machine translation.
@@ -28,6 +29,10 @@ for f in films:
     f["summary"] = s.get("summary") or t.get("overview_en")
     f["wiki"] = s.get("wiki")
     f["tmdb_id"] = t.get("tmdb_id")
+
+    o = omdb.get(k) or {}
+    f["rt"] = o.get("rt")
+    f["metacritic"] = o.get("metacritic")
 
     if t.get("overview_ar"):
         f["summary_ar"], f["ar_src"] = t["overview_ar"], "tmdb"

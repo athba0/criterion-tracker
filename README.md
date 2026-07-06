@@ -53,13 +53,41 @@ python3 scripts/add_ratings.py title.basics.tsv.gz title.ratings.tsv.gz
 # 3. Fetch Wikipedia summaries (batch API, resumable, rate-limit friendly)
 python3 scripts/fetch_summaries.py
 
-# 4. Merge + compute recommendations -> site/films.json
+# 4. TMDB: English + official Arabic overviews, TMDB ids (needs a key, see below)
+python3 scripts/enrich_tmdb.py
+
+# 5. Fill remaining Arabic via machine translation of the English summary
+python3 scripts/translate_ar.py
+
+# 6. (optional) Rotten Tomatoes + Metacritic from OMDb — 1000/day, resumable
+python3 scripts/enrich_omdb.py
+
+# 7. Merge every source + compute recommendations -> site/films.json
 python3 scripts/build_site.py
 ```
 
 `add_ratings.py` matches ~88% of films (unmatched ones — mostly shorts and box-set
 oddities — sort to the bottom as "unrated"). Ranking formula:
 `WR = v/(v+m)·R + m/(v+m)·C` with `m = 3000` votes and `C` = collection mean (~7.26).
+
+### API keys
+
+`enrich_tmdb.py` and `enrich_omdb.py` read keys from a **gitignored**
+`secrets.local.json` (or the `TMDB_TOKEN` / `OMDB_KEY` env vars):
+
+```json
+{ "tmdb_read_token": "…", "omdb_key": "…" }
+```
+
+Keys are used **only at build time** — they are baked into `data/*.json`, never
+into `films.json`, so the published site ships no credentials. OMDb keys must be
+activated via the link OMDb emails you before they work.
+
+### Summary source priority
+
+- **English:** Wikipedia intro (encyclopedic) → TMDB overview (fills gaps). ~1700/1847.
+- **Arabic:** official TMDB overview → Arabic Wikipedia intro → machine translation
+  (flagged «ترجمة آلية» in the UI). The EN/ع toggle on each film picks the language.
 
 ## Local preview
 

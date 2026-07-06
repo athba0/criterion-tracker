@@ -296,7 +296,8 @@ function openFilm(rank) {
         <div class="mmeta">${f.year || "?"} · ${esc(f.director)} · ${esc(f.country)}
           ${f.runtime ? " · " + hhmm(f.runtime) : ""}${f.spine != null ? " · spine #" + f.spine : ""}<br>
           Watch-first rank <b style="color:var(--accent)">#${f.rank}</b>
-          ${f.imdb_rating ? ` · IMDb ${f.imdb_rating.toFixed(1)}★ (${f.imdb_votes.toLocaleString()})` : ""}</div>
+          ${f.imdb_rating ? ` · IMDb ${f.imdb_rating.toFixed(1)}★ (${f.imdb_votes.toLocaleString()})` : ""}
+          ${f.rt != null ? ` · 🍅 ${f.rt}%` : ""}${f.metacritic != null ? ` · Ⓜ ${f.metacritic}` : ""}</div>
         <div class="chips">${(f.genres || []).map(g => `<span class="chip" onclick="filterGenre('${esc(g)}')">${esc(g)}</span>`).join("")}</div>
         ${summaryBlock(f)}
       </div>
