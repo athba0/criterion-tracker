@@ -35,6 +35,7 @@ ar = load("summaries_ar.json")         # AR from ar.wikipedia / machine translat
 tmdb = load("tmdb.json")               # EN + AR overviews from TMDB
 omdb = load("omdb.json")               # Rotten Tomatoes + Metacritic scores
 deepl = load("summaries_ar_deepl.json")  # DeepL Arabic translations of the plot
+wd = load("wikidata.json")             # festival awards + colour
 
 # Source priority — English plot: full TMDB overview, else Wikipedia intro.
 # Arabic: TMDB official overview, then DeepL translation, then older MT / ar.wiki.
@@ -56,6 +57,17 @@ for f in films:
     f["providers_qa"] = t.get("providers_qa")
     f["language"] = LANG.get(t.get("lang"), (t.get("lang") or "").upper() or None)
     f["cast"] = t.get("cast") or []
+
+    kws = t.get("keywords") or []
+    f["keywords"] = kws
+    f["collection"] = t.get("collection")
+    f["collection_id"] = t.get("collection_id")
+    # silent from a TMDB keyword ("silent film"); colour from Wikidata
+    f["silent"] = any("silent" in kw.lower() for kw in kws)
+    w = wd.get(k) or {}
+    f["awards"] = w.get("awards") or []
+    f["award_labels"] = w.get("award_labels") or []
+    f["color"] = w.get("color")  # "bw" | "color" | None
 
     if t.get("overview_ar"):
         f["summary_ar"], f["ar_src"] = t["overview_ar"], "tmdb"
@@ -127,11 +139,14 @@ for i, f in enumerate(films):
 
 out = json.dumps(films, ensure_ascii=False, separators=(",", ":"))
 (ROOT / "site" / "films.json").write_text(out)
+# reviews are bulky and lazy-loaded by the site — copy them alongside films.json
+rev = ROOT / "data" / "reviews.json"
+if rev.exists():
+    (ROOT / "site" / "reviews.json").write_text(rev.read_text())
 with_sum = sum(1 for f in films if f["summary"])
 with_ar = sum(1 for f in films if f["summary_ar"])
 print(f"site/films.json: {len(films)} films, {with_sum} EN summaries, "
-      f"{with_ar} AR summaries, "
-      f"{sum(1 for f in films if f['similar'])} with recommendations, "
-      f"{len(out) // 1024} KB")
+      f"{with_ar} AR summaries, {sum(1 for f in films if f.get('awards'))} awarded, "
+      f"{sum(1 for f in films if f.get('keywords'))} with keywords, {len(out) // 1024} KB")
 print("recs for Seven Samurai:",
       [films[r - 1]["title"] for r in next(f for f in films if f["title"] == "Seven Samurai")["similar"]])

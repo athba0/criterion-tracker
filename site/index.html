@@ -68,6 +68,11 @@
   #list.grid .gbadge { position: absolute; top: 6px; left: 6px; background: rgba(16,16,20,.85);
                        color: var(--accent); font-size: 11px; font-weight: 700;
                        padding: 2px 6px; border-radius: 5px; }
+  .trophy { font-size: 12px; }
+  #list.grid .gtrophy { position: absolute; bottom: 6px; left: 6px; font-size: 13px;
+                        background: rgba(16,16,20,.8); border-radius: 5px; padding: 1px 4px; }
+  .gtrophy { display: none; }
+  #list.grid .gtrophy { display: block; }
   #list.grid .gdone { position: absolute; top: 6px; right: 6px; background: var(--green);
                       color: #10241a; font-size: 12px; padding: 1px 6px; border-radius: 5px; }
   #list.grid .pwrap { position: relative; }
@@ -161,9 +166,56 @@
           border: 1px solid rgba(228,179,74,.3); border-radius: 8px; padding: 8px 10px; }
   .sstat { font-size: 13px; margin: 8px 0; }
   .sstat b { color: var(--green); }
+  #panelOverlay { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: none;
+                  z-index: 20; overflow-y: auto; padding: 6vh 16px; }
+  #panelOverlay.show { display: block; }
+  #panelModal { max-width: 640px; margin: 0 auto; background: var(--panel);
+                border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  #panelModal h2 { margin: 0 0 12px; font-size: 20px; }
+  #panelModal h2 span { color: var(--accent); }
+  .statgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 12px 0; }
+  .statcard { background: var(--panel2); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+  .statcard .big { font-size: 24px; font-weight: 700; color: var(--accent); }
+  .statcard .lbl { font-size: 12px; color: var(--muted); }
+  .bars { margin: 10px 0; }
+  .barrow { display: flex; align-items: center; gap: 8px; font-size: 12.5px; margin: 3px 0; }
+  .barrow .bl { width: 92px; color: var(--muted); text-align: right; flex: none; }
+  .barrow .bt { flex: 1; background: var(--panel2); border-radius: 4px; height: 14px; overflow: hidden; }
+  .barrow .bf { height: 100%; background: var(--accent); }
+  .barrow .bn { width: 34px; color: var(--muted); flex: none; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .badge { background: var(--panel2); border: 1px solid var(--border); border-radius: 10px;
+           padding: 8px 12px; font-size: 12.5px; }
+  .badge.got { border-color: var(--green); }
+  .badge.got b { color: var(--green); }
+  .badge.locked { opacity: .5; }
+  .pclose { float: right; font-size: 20px; background: none; border: none; color: var(--muted); cursor: pointer; }
+  .df { display: flex; gap: 14px; margin: 12px 0; flex-wrap: wrap; }
+  .df .dfcard { flex: 1; min-width: 200px; background: var(--panel2); border: 1px solid var(--border);
+                border-radius: 10px; padding: 10px; cursor: pointer; display: flex; gap: 10px; }
+  .df .dfcard img { width: 56px; border-radius: 6px; flex: none; }
+  .sectlabel { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 18px 0 6px; }
   .cast { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
   .cast .actor { color: var(--text); cursor: pointer; }
   .cast .actor:hover { color: var(--accent); }
+  .awardline { margin: 8px 0 0; font-size: 13px; color: #e4c76a; }
+  .collbar { margin: 8px 0 0; font-size: 13px; }
+  .collbar a { color: var(--accent); cursor: pointer; }
+  .kwrow { margin: 8px 0 0; }
+  .kw { display: inline-block; background: var(--panel2); border: 1px solid var(--border);
+        border-radius: 20px; padding: 2px 9px; font-size: 11.5px; margin: 0 4px 4px 0;
+        color: var(--muted); cursor: pointer; }
+  .kw:hover { color: var(--accent); border-color: var(--accent); }
+  .reviews h3 { font-size: 13px; color: var(--muted); text-transform: uppercase;
+                letter-spacing: 1px; margin: 18px 0 8px; }
+  .review { background: var(--panel2); border: 1px solid var(--border); border-radius: 10px;
+            padding: 10px 12px; margin-bottom: 8px; }
+  .review .rhead { font-size: 12.5px; color: var(--muted); margin-bottom: 4px; }
+  .review .rhead b { color: var(--text); }
+  .review .rbody { font-size: 13px; line-height: 1.5; color: #cfccc7; white-space: pre-wrap;
+                   max-height: 8.5em; overflow: hidden; position: relative; }
+  .review .rbody.open { max-height: none; }
+  .review .more { color: var(--accent); cursor: pointer; font-size: 12px; }
   .recrow { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
   .rec { flex: none; width: 92px; cursor: pointer; font-size: 11.5px; line-height: 1.3;
          color: var(--muted); }
@@ -189,6 +241,18 @@
   <select id="fgenre"><option value="all">All genres</option></select>
   <select id="fcountry"><option value="all">All countries</option></select>
   <select id="flang"><option value="all">All languages</option></select>
+  <select id="fawards">
+    <option value="all">Any / no award</option>
+    <option value="any">🏆 Award winners</option>
+  </select>
+  <select id="fformat">
+    <option value="all">Any format</option>
+    <option value="color">Colour</option>
+    <option value="bw">Black &amp; white</option>
+    <option value="silent">Silent</option>
+    <option value="short">Under 100 min</option>
+    <option value="long">150 min+</option>
+  </select>
   <select id="fdecade"><option value="all">All decades</option></select>
   <select id="fwatch">
     <option value="all">All films</option>
@@ -214,6 +278,9 @@
 <div class="bar">
   <button id="vtoggle">🖼 Poster view</button>
   <button id="surprise" class="gold">🎲 Surprise me</button>
+  <button id="blindBtn">🎯 Blind spots</button>
+  <button id="dfBtn">🎬 Double feature</button>
+  <button id="insightsBtn">📊 Insights</button>
   <span style="flex:1"></span>
   <button id="syncBtn">☁ Sync <span id="syncDot"></span></button>
   <button id="exportLb">Export Letterboxd CSV</button>
@@ -227,6 +294,8 @@
 <div id="overlay"><div id="modal"></div></div>
 
 <div id="syncOverlay"><div id="syncModal"></div></div>
+
+<div id="panelOverlay"><div id="panelModal"></div></div>
 <footer>
   Data: criterion.com · IMDb datasets · Wikipedia · TMDB · JustWatch — progress is stored in this browser; use ☁ Sync or Backup to keep a copy.<br>
   This product uses the TMDB API but is not endorsed or certified by TMDB. Streaming availability by JustWatch.
@@ -236,7 +305,8 @@
 const LS_KEY = "criterion-tracker-v1";
 let films = [], state = {}, byRank = {}, gridView = false;
 let prefLang = localStorage.getItem("ct-lang") || "en";
-let person = null;  // active {type:"director"|"actor", name} filter
+let focus = null;   // active {type:"director"|"actor"|"keyword"|"collection", value}
+let blind = false;  // "blind spots" mode
 
 const load = () => {
   try { state = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { state = {}; }
@@ -272,43 +342,89 @@ fetch("films.json").then(r => r.json()).then(data => {
   countries.forEach(c => fcountry.insertAdjacentHTML("beforeend", `<option>${esc(c)}</option>`));
   const langs = [...new Set(films.map(f => f.language).filter(Boolean))].sort();
   langs.forEach(l => flang.insertAdjacentHTML("beforeend", `<option>${esc(l)}</option>`));
+  const awards = [...new Set(films.flatMap(f => f.awards || []))].sort();
+  awards.forEach(a => fawards.insertAdjacentHTML("beforeend", `<option>${esc(a)}</option>`));
   load(); render(); updateProgress(); syncOnLoad();
 });
 
+// "Blind spots": a pointed shortlist of unwatched films that match your taste —
+// learned from what you rate highly, weighted toward directors, then ranked by
+// taste-match and acclaim, capped so it stays a shortlist (not a country dump).
+function blindSpots() {
+  const dir = {}, ctr = {}, dec = {}, gen = {};
+  const push = (m, k, r) => { if (k == null) return; (m[k] = m[k] || []).push(r); };
+  for (const f of films) {
+    const s = st(f);
+    if (!s.watched || !s.rating) continue;
+    push(dir, f.director, s.rating);
+    push(ctr, f.country, s.rating);
+    push(dec, f.year && Math.floor(f.year / 10) * 10, s.rating);
+    (f.genres || []).forEach(g => push(gen, g, s.rating));
+  }
+  const loved = (m, k) => { const rs = m[k]; return rs && rs.length && rs.reduce((a, b) => a + b, 0) / rs.length >= 4; };
+  const scored = [];
+  for (const f of films) {
+    if (st(f).watched) continue;
+    let sc = 0;
+    if (loved(dir, f.director)) sc += 4;                          // director you love — strong
+    if (loved(ctr, f.country)) sc += 1;
+    if (loved(dec, f.year && Math.floor(f.year / 10) * 10)) sc += 1;
+    sc += (f.genres || []).filter(g => loved(gen, g)).length * 0.8;
+    if (sc >= 2) scored.push([sc, f]);                            // need more than one weak signal
+  }
+  scored.sort((a, b) => b[0] - a[0] || a[1].rank - b[1].rank);    // taste-match, then acclaim
+  return new Set(scored.slice(0, 120).map(x => x[1].rank));
+}
+
 // clicking a director/actor name filters the whole list to that person
-function setPerson(type, name) {
-  person = { type, name };
+const FOCUS_LABEL = { director: "Director", actor: "Actor", keyword: "Theme", collection: "Collection" };
+function setFocus(type, value) {
+  focus = { type, value };
+  blind = false;
   const chip = document.getElementById("activechip");
-  chip.innerHTML = `${type === "director" ? "Director" : "Actor"}: <b>${esc(name)}</b> <span class="x" onclick="clearPerson()">✕</span>`;
+  chip.innerHTML = `${FOCUS_LABEL[type]}: <b>${esc(value)}</b> <span class="x" onclick="clearFocus()">✕</span>`;
   document.getElementById("activebar").style.display = "flex";
   closeModal();
   render();
   window.scrollTo(0, 0);
 }
-function clearPerson() {
-  person = null;
+function clearFocus() {
+  focus = null; blind = false;
   document.getElementById("activebar").style.display = "none";
   render();
 }
+// kept for older call sites
+function setPerson(type, name) { setFocus(type, name); }
 
 function filtered() {
   const q = document.getElementById("q").value.trim().toLowerCase();
   const fg = fgenre.value, fd = fdecade.value, fw = fwatch.value;
   const fc = fcountry.value, fl = flang.value;
+  const fa = fawards.value, ff = fformat.value;
+  const blindSet = blind ? blindSpots() : null;
   let out = films.filter(f => {
     const s = st(f);
     if (q) {
-      const hay = (f.title + " " + f.director + " " + f.country + " " +
-                   (f.language || "") + " " + (f.cast || []).join(" ")).toLowerCase();
+      const hay = (f.title + " " + f.director + " " + f.country + " " + (f.language || "") + " " +
+                   (f.cast || []).join(" ") + " " + (f.keywords || []).join(" ")).toLowerCase();
       if (!hay.includes(q)) return false;
     }
-    if (person) {
-      if (person.type === "director" && f.director !== person.name) return false;
-      if (person.type === "actor" && !(f.cast || []).includes(person.name)) return false;
+    if (blindSet && !blindSet.has(f.rank)) return false;
+    if (focus) {
+      if (focus.type === "director" && f.director !== focus.value) return false;
+      if (focus.type === "actor" && !(f.cast || []).includes(focus.value)) return false;
+      if (focus.type === "keyword" && !(f.keywords || []).includes(focus.value)) return false;
+      if (focus.type === "collection" && f.collection !== focus.value) return false;
     }
     if (fg !== "all" && !(f.genres || []).includes(fg)) return false;
     if (fc !== "all" && f.country !== fc) return false;
     if (fl !== "all" && f.language !== fl) return false;
+    if (fa !== "all" && !(fa === "any" ? (f.awards || []).length : (f.awards || []).includes(fa))) return false;
+    if (ff === "color" && f.color !== "color") return false;
+    if (ff === "bw" && f.color !== "bw") return false;
+    if (ff === "silent" && !f.silent) return false;
+    if (ff === "short" && !(f.runtime && f.runtime <= 100)) return false;
+    if (ff === "long" && !(f.runtime && f.runtime >= 150)) return false;
     if (fd !== "all" && (!f.year || Math.floor(f.year / 10) * 10 !== +fd)) return false;
     if (fw === "watched" && !s.watched) return false;
     if (fw === "unwatched" && s.watched) return false;
@@ -341,14 +457,16 @@ function rowHtml(f, s) {
     : `<span style="font-size:12px">unrated</span>`;
   const my = s.rating ? ` · you: ${"★".repeat(s.rating)}` : "";
   const rt = f.runtime ? " · " + hhmm(f.runtime) : "";
+  const award = (f.awards && f.awards.length)
+    ? ` <span class="trophy" title="${esc(f.awards.join(", "))}">🏆</span>` : "";
   return `<div class="film ${s.watched ? "watched" : ""}" data-rank="${f.rank}" onclick="openFilm(${f.rank})">
     <div class="rank">#${f.rank}</div>
     <img class="poster" loading="lazy" src="${poster(f, "thumbnail")}" alt="">
     <div class="pwrap"><img class="poster" loading="lazy" src="${poster(f, "small")}" alt="">
-      <span class="gbadge">#${f.rank}</span><span class="gdone">✓</span></div>
+      <span class="gbadge">#${f.rank}</span>${award ? `<span class="gtrophy" title="${esc(f.awards.join(", "))}">🏆</span>` : ""}<span class="gdone">✓</span></div>
     <div class="check" onclick="event.stopPropagation(); toggleWatched(${f.rank})">✓</div>
     <div class="info">
-      <div class="title">${esc(f.title)} <span class="meta">(${f.year || "?"})</span></div>
+      <div class="title">${esc(f.title)} <span class="meta">(${f.year || "?"})</span>${award}</div>
       <div class="meta"><span class="link-like" onclick="event.stopPropagation(); setPerson('director','${esc((f.director||'').replace(/'/g,"\\'"))}')">${esc(f.director)}</span> · ${esc(f.country)}${f.language ? " · " + esc(f.language) : ""}${rt}${f.spine != null ? " · #" + f.spine : ""}${my}</div>
     </div>
     <div class="imdb">${imdb}</div>
@@ -419,11 +537,16 @@ function openFilm(rank) {
           ${f.runtime ? " · " + hhmm(f.runtime) : ""}${f.spine != null ? " · spine #" + f.spine : ""}<br>
           Watch-first rank <b style="color:var(--accent)">#${f.rank}</b>
           ${f.imdb_rating ? ` · IMDb ${f.imdb_rating.toFixed(1)}★ (${f.imdb_votes.toLocaleString()})` : ""}
-          ${f.rt != null ? ` · 🍅 ${f.rt}%` : ""}${f.metacritic != null ? ` · Ⓜ ${f.metacritic}` : ""}</div>
+          ${f.rt != null ? ` · 🍅 ${f.rt}%` : ""}${f.metacritic != null ? ` · Ⓜ ${f.metacritic}` : ""}
+          ${f.color === "bw" ? " · ⚫ B&W" : ""}${f.silent ? " · 🔇 Silent" : ""}</div>
         <div class="chips">${(f.genres || []).map(g => `<span class="chip" onclick="filterGenre('${esc(g)}')">${esc(g)}</span>`).join("")}</div>
+        ${(f.award_labels && f.award_labels.length) ? `<div class="awardline">🏆 ${f.award_labels.map(esc).join(" · ")}</div>` : ""}
+        ${f.collection ? `<div class="collbar">◨ Part of <a onclick="setFocus('collection','${esc(f.collection.replace(/'/g,"\\'"))}')">${esc(f.collection)}</a></div>` : ""}
         ${summaryBlock(f)}
         ${(f.cast && f.cast.length) ? `<div class="cast">Cast: ${f.cast.map(a =>
-          `<span class="actor" onclick="setPerson('actor','${esc(a.replace(/'/g,"\\'"))}')">${esc(a)}</span>`).join(", ")}</div>` : ""}
+          `<span class="actor" onclick="setFocus('actor','${esc(a.replace(/'/g,"\\'"))}')">${esc(a)}</span>`).join(", ")}</div>` : ""}
+        ${(f.keywords && f.keywords.length) ? `<div class="kwrow">${f.keywords.slice(0,10).map(k =>
+          `<span class="kw" onclick="setFocus('keyword','${esc(k.replace(/'/g,"\\'"))}')">${esc(k)}</span>`).join("")}</div>` : ""}
       </div>
     </div>
     <div class="mbody">
@@ -448,10 +571,39 @@ function openFilm(rank) {
       </div>
       <textarea placeholder="Your review…" onblur="setReview(${rank}, this.value, this)">${esc(s.review || "")}</textarea>
       <span class="saved">saved ✓</span>
+      <div class="reviews" id="reviews-${rank}"></div>
       ${recs.length ? `<div class="recs"><h3>If you liked this</h3><div class="recrow">${recs.map(r =>
         `<div class="rec" onclick="openFilm(${r.rank})"><img loading="lazy" src="${poster(r, "small")}" alt="">${esc(r.title)}<br><span style="opacity:.6">${r.year || ""}</span></div>`).join("")}</div></div>` : ""}
     </div>`;
   document.getElementById("overlay").classList.add("show");
+  showReviews(rank);
+}
+
+// Reviews are stored separately and loaded once, on first film open, so the
+// initial page stays light.
+let reviewData = null, reviewLoading = null;
+function loadReviews() {
+  if (reviewData) return Promise.resolve(reviewData);
+  if (!reviewLoading)
+    reviewLoading = fetch("reviews.json").then(r => r.ok ? r.json() : {})
+      .then(d => (reviewData = d)).catch(() => (reviewData = {}));
+  return reviewLoading;
+}
+function showReviews(rank) {
+  const f = byRank[rank];
+  loadReviews().then(all => {
+    const box = document.getElementById("reviews-" + rank);
+    if (!box) return;
+    const revs = all[f.title + "|" + f.year] || [];
+    if (!revs.length) return;
+    box.innerHTML = `<h3>What people say</h3>` + revs.map(r => `
+      <div class="review">
+        <div class="rhead"><b>${esc(r.author)}</b>${r.rating ? " · " + r.rating + "/10" : ""}
+          ${r.url ? ` · <a href="${esc(r.url)}" target="_blank" style="color:var(--accent)">source ↗</a>` : ""}</div>
+        <div class="rbody">${esc(r.content)}</div>
+        ${r.content.length > 320 ? `<span class="more" onclick="this.previousElementSibling.classList.toggle('open'); this.textContent = this.textContent==='Show more'?'Show less':'Show more'">Show more</span>` : ""}
+      </div>`).join("");
+  });
 }
 function closeModal() { document.getElementById("overlay").classList.remove("show"); render(); }
 document.getElementById("overlay").addEventListener("click", e => { if (e.target.id === "overlay") closeModal(); });
@@ -482,7 +634,7 @@ function updateProgress() {
   document.getElementById("pfill").style.width = films.length ? (100 * watched / films.length) + "%" : 0;
 }
 
-["q", "fgenre", "fcountry", "flang", "fdecade", "fwatch", "fsort"].forEach(id =>
+["q", "fgenre", "fcountry", "flang", "fawards", "fformat", "fdecade", "fwatch", "fsort"].forEach(id =>
   document.getElementById(id).addEventListener(id === "q" ? "input" : "change", render));
 
 document.getElementById("vtoggle").onclick = function () {
@@ -670,6 +822,117 @@ function syncOnLoad() {
     setDot("err", "Reconnect needed");
   }
 }
+
+// ---- Insights, achievements, "year in Criterion", double feature, blind spots ----
+function openPanel(html) {
+  document.getElementById("panelModal").innerHTML =
+    `<button class="pclose" onclick="closePanel()">✕</button>` + html;
+  document.getElementById("panelOverlay").classList.add("show");
+}
+function closePanel() { document.getElementById("panelOverlay").classList.remove("show"); }
+document.getElementById("panelOverlay").addEventListener("click", e => { if (e.target.id === "panelOverlay") closePanel(); });
+
+const watchedFilms = () => films.filter(f => st(f).watched);
+const tally = (arr, keyFn) => {
+  const m = {};
+  arr.forEach(f => { const k = keyFn(f); if (k) m[k] = (m[k] || 0) + 1; });
+  return Object.entries(m).sort((a, b) => b[1] - a[1]);
+};
+
+function insightsPanel() {
+  const w = watchedFilms();
+  const mins = w.reduce((a, f) => a + (f.runtime || 0), 0);
+  const rated = w.filter(f => st(f).rating);
+  const avg = rated.length ? rated.reduce((a, f) => a + st(f).rating, 0) / rated.length : 0;
+  const reviewed = films.filter(f => (st(f).review || "").trim()).length;
+  const topDir = tally(w, f => f.director).slice(0, 5);
+  const byDecade = tally(w, f => f.year && Math.floor(f.year / 10) * 10 + "s").sort((a, b) => a[0].localeCompare(b[0]));
+  const maxDec = Math.max(1, ...byDecade.map(d => d[1]));
+  const yr = new Date().getFullYear();
+  const wYear = w.filter(f => (st(f).date || "").startsWith(yr + ""));
+  const yrDir = tally(wYear, f => f.director)[0];
+  const stat = (big, lbl) => `<div class="statcard"><div class="big">${big}</div><div class="lbl">${lbl}</div></div>`;
+  const bar = (l, n, max) => `<div class="barrow"><span class="bl">${esc(l)}</span><span class="bt"><span class="bf" style="width:${100 * n / max}%"></span></span><span class="bn">${n}</span></div>`;
+  openPanel(`
+    <h2><span>📊</span> Your Criterion insights</h2>
+    <div class="statgrid">
+      ${stat(w.length + " / " + films.length, "films watched")}
+      ${stat(Math.round(mins / 60) + "h", "time watched")}
+      ${stat(avg ? avg.toFixed(1) + "★" : "—", "your avg rating")}
+      ${stat(reviewed, "reviews written")}
+      ${stat(Math.round(100 * w.length / films.length) + "%", "of the collection")}
+    </div>
+    ${wYear.length ? `<div class="sectlabel">Your ${yr}</div>
+      <p style="font-size:13.5px;color:#cfccc7">You've watched <b style="color:var(--accent)">${wYear.length}</b> films this year
+      (${Math.round(wYear.reduce((a, f) => a + (f.runtime || 0), 0) / 60)}h)${yrDir ? `, most from <b>${esc(yrDir[0])}</b>` : ""}.</p>` : ""}
+    ${topDir.length ? `<div class="sectlabel">Most-watched directors</div><div class="bars">${topDir.map(([d, n]) => bar(d, n, topDir[0][1])).join("")}</div>` : ""}
+    ${byDecade.length ? `<div class="sectlabel">By decade</div><div class="bars">${byDecade.map(([d, n]) => bar(d, n, maxDec)).join("")}</div>` : ""}
+    <div class="sectlabel">Achievements</div><div class="badges">${achievements()}</div>
+    ${w.length === 0 ? `<p style="color:var(--muted)">Start marking films watched to fill this in.</p>` : ""}`);
+}
+
+function achievements() {
+  const w = watchedFilms(), ws = new Set(w.map(f => f.rank));
+  const wIf = fn => w.filter(fn).length;
+  const dirTotal = {}, dirSeen = {};
+  films.forEach(f => {
+    if (!f.director) return;
+    dirTotal[f.director] = (dirTotal[f.director] || 0) + 1;
+    if (ws.has(f.rank)) dirSeen[f.director] = (dirSeen[f.director] || 0) + 1;
+  });
+  const doneDirs = Object.keys(dirTotal).filter(d => dirTotal[d] >= 3 && dirSeen[d] === dirTotal[d]);
+  const reviews = films.filter(f => (st(f).review || "").trim()).length;
+  const list = [
+    ["First 100", w.length >= 100, w.length + "/100 watched"],
+    ["Silent era", wIf(f => f.silent) >= 5, wIf(f => f.silent) + "/5 silent films"],
+    ["Black & white", wIf(f => f.color === "bw") >= 25, wIf(f => f.color === "bw") + "/25 B&W"],
+    ["Festival circuit", wIf(f => (f.awards || []).length) >= 15, wIf(f => (f.awards || []).length) + "/15 award winners"],
+    ["Globe-trotter", new Set(w.map(f => f.country)).size >= 15, new Set(w.map(f => f.country)).size + "/15 countries"],
+    ["Completionist", doneDirs.length > 0, doneDirs.length ? "finished " + doneDirs.slice(0, 2).join(", ") : "finish every film by a director"],
+    ["Critic", reviews >= 25, reviews + "/25 reviews"],
+    ["Halfway", w.length >= films.length / 2, "watch half the collection"],
+  ];
+  return list.map(([name, got, desc]) =>
+    `<div class="badge ${got ? "got" : "locked"}"><b>${got ? "✓ " : "○ "}${esc(name)}</b><br><span style="color:var(--muted)">${esc(desc)}</span></div>`).join("");
+}
+
+function doubleFeature() {
+  const un = films.filter(f => !st(f).watched && f.runtime);
+  if (un.length < 2) return openPanel("<h2>🎬 Double feature</h2><p>Not enough unwatched films with runtimes.</p>");
+  const seedPool = un.slice(0, Math.max(30, Math.floor(un.length / 5)));
+  const a = seedPool[Math.floor(Math.random() * seedPool.length)];
+  const akw = new Set(a.keywords || []);
+  const scored = un.filter(f => f !== a).map(f => {
+    let sc = 0;
+    if (f.director === a.director) sc += 3;
+    sc += 2 * (f.keywords || []).filter(k => akw.has(k)).length;
+    if (f.country === a.country) sc += 1;
+    return [sc, f];
+  }).sort((x, y) => y[0] - x[0]);
+  const b = (scored[0] && scored[0][0] > 0) ? scored[0][1] : un[Math.floor(Math.random() * un.length)];
+  const shared = (a.keywords || []).filter(k => (b.keywords || []).includes(k)).slice(0, 3);
+  const card = f => `<div class="dfcard" onclick="closePanel();openFilm(${f.rank})">
+      <img src="${poster(f, "small")}" alt=""><div><b>${esc(f.title)}</b>
+      <span style="color:var(--muted)">(${f.year})</span><br>
+      <span style="color:var(--muted);font-size:12px">${esc(f.director)} · ${hhmm(f.runtime)}</span></div></div>`;
+  openPanel(`<h2><span>🎬</span> Tonight's double feature</h2>
+    <p style="color:var(--muted)">Two unwatched films that pair well${a.director === b.director ? " (same director)" : shared.length ? " — both: " + shared.map(esc).join(", ") : ""}. Total ${hhmm((a.runtime || 0) + (b.runtime || 0))}.</p>
+    <div class="df">${card(a)}${card(b)}</div>
+    <button class="gold" onclick="doubleFeature()">🎬 Another pairing</button>`);
+}
+
+document.getElementById("insightsBtn").onclick = insightsPanel;
+document.getElementById("dfBtn").onclick = doubleFeature;
+document.getElementById("blindBtn").onclick = () => {
+  const set = blindSpots();
+  if (!set.size) return alert("Rate a few watched films 4–5★ first — blind spots are built from the directors, countries and eras you love.");
+  blind = true; focus = null;
+  document.getElementById("activebar").style.display = "flex";
+  document.getElementById("activechip").innerHTML =
+    `🎯 Blind spots (${set.size}) <span class="x" onclick="clearFocus()">✕</span>`;
+  render(); window.scrollTo(0, 0);
+};
+document.addEventListener("keydown", e => { if (e.key === "Escape") closePanel(); });
 </script>
 </body>
 </html>
