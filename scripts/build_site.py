@@ -7,6 +7,23 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 films = json.loads((ROOT / "data" / "films_ranked.json").read_text())
 
+# TMDB original-language ISO 639-1 -> English name (covers what the collection uses)
+LANG = {
+    "en": "English", "fr": "French", "ja": "Japanese", "it": "Italian",
+    "de": "German", "es": "Spanish", "ru": "Russian", "sv": "Swedish",
+    "zh": "Chinese", "cn": "Chinese", "ko": "Korean", "hi": "Hindi",
+    "pl": "Polish", "cs": "Czech", "da": "Danish", "fi": "Finnish",
+    "pt": "Portuguese", "nl": "Dutch", "fa": "Persian", "ar": "Arabic",
+    "he": "Hebrew", "tr": "Turkish", "hu": "Hungarian", "el": "Greek",
+    "no": "Norwegian", "th": "Thai", "bn": "Bengali", "ta": "Tamil",
+    "sr": "Serbian", "hr": "Croatian", "ro": "Romanian", "uk": "Ukrainian",
+    "is": "Icelandic", "ka": "Georgian", "vi": "Vietnamese", "id": "Indonesian",
+    "wo": "Wolof", "am": "Amharic", "mn": "Mongolian", "sk": "Slovak",
+    "bs": "Bosnian", "ml": "Malayalam", "tl": "Tagalog", "xx": "No dialogue",
+    "hy": "Armenian", "kk": "Kazakh", "ln": "Lingala", "lv": "Latvian",
+    "mk": "Macedonian", "om": "Oromo", "sh": "Serbo-Croatian", "st": "Sotho",
+}
+
 
 def load(name):
     p = ROOT / "data" / name
@@ -33,6 +50,11 @@ for f in films:
     o = omdb.get(k) or {}
     f["rt"] = o.get("rt")
     f["metacritic"] = o.get("metacritic")
+
+    f["trailer"] = t.get("trailer")
+    f["providers_qa"] = t.get("providers_qa")
+    f["language"] = LANG.get(t.get("lang"), (t.get("lang") or "").upper() or None)
+    f["cast"] = t.get("cast") or []
 
     if t.get("overview_ar"):
         f["summary_ar"], f["ar_src"] = t["overview_ar"], "tmdb"

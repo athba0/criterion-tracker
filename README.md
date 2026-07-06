@@ -53,8 +53,11 @@ python3 scripts/add_ratings.py title.basics.tsv.gz title.ratings.tsv.gz
 # 3. Fetch Wikipedia summaries (batch API, resumable, rate-limit friendly)
 python3 scripts/fetch_summaries.py
 
-# 4. TMDB: English + official Arabic overviews, TMDB ids (needs a key, see below)
-python3 scripts/enrich_tmdb.py
+# 4. TMDB: English + official Arabic overviews, ids, trailers, Qatar providers,
+#    original language + top cast (needs a key, see below)
+python3 scripts/enrich_tmdb.py        # overviews + ids
+python3 scripts/enrich_tmdb_extra.py  # trailers + "where to watch" (Qatar)
+python3 scripts/enrich_tmdb_cast.py   # original language + billed cast
 
 # 5. Fill remaining Arabic via machine translation of the English summary
 python3 scripts/translate_ar.py

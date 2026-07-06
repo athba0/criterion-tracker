@@ -115,8 +115,33 @@
              font: 14px/1.5 inherit; resize: vertical; }
   .saved { font-size: 12px; color: var(--green); margin-left: 8px; opacity: 0; transition: opacity .3s; }
   .saved.show { opacity: 1; }
-  .recs h3 { font-size: 13px; color: var(--muted); text-transform: uppercase;
+  .trailer { margin: 14px 0 4px; }
+  .trbtn { background: var(--accent); color: #201a08; border: none; font-weight: 600;
+           font-size: 14px; padding: 9px 16px; border-radius: 8px; cursor: pointer; }
+  .trbtn:hover { filter: brightness(1.08); }
+  .trwrap { position: relative; width: 100%; aspect-ratio: 16/9; margin: 4px 0;
+            border-radius: 10px; overflow: hidden; background: #000; }
+  .trwrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .watch { margin: 16px 0 4px; }
+  .watch h3, .recs h3 { font-size: 13px; color: var(--muted); text-transform: uppercase;
              letter-spacing: 1px; margin: 18px 0 8px; }
+  .wprow { display: flex; align-items: center; gap: 8px; margin: 6px 0; flex-wrap: wrap; }
+  .wplabel { font-size: 12px; color: var(--muted); min-width: 52px; }
+  .wp img { width: 34px; height: 34px; border-radius: 8px; display: block; }
+  .wp { font-size: 12px; color: var(--text); background: var(--panel2);
+        padding: 4px 8px; border-radius: 8px; }
+  .wpnone { font-size: 13px; color: var(--muted); margin-right: 10px; }
+  .jw { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .afilter { display: inline-flex; align-items: center; gap: 8px; background: var(--panel2);
+             border: 1px solid var(--accent); color: var(--text); border-radius: 20px;
+             padding: 5px 12px; font-size: 13px; }
+  .afilter b { color: var(--accent); }
+  .afilter .x { cursor: pointer; color: var(--muted); font-weight: 700; }
+  .afilter .x:hover { color: var(--text); }
+  .link-like { color: var(--accent); cursor: pointer; }
+  .cast { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+  .cast .actor { color: var(--text); cursor: pointer; }
+  .cast .actor:hover { color: var(--accent); }
   .recrow { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
   .rec { flex: none; width: 92px; cursor: pointer; font-size: 11.5px; line-height: 1.3;
          color: var(--muted); }
@@ -138,8 +163,10 @@
 <div class="progress"><span id="pcount"></span><div class="pbar"><div class="pfill" id="pfill"></div></div></div>
 
 <div class="bar">
-  <input type="search" id="q" placeholder="Search title / director / country…">
+  <input type="search" id="q" placeholder="Search title / director / actor / country…">
   <select id="fgenre"><option value="all">All genres</option></select>
+  <select id="fcountry"><option value="all">All countries</option></select>
+  <select id="flang"><option value="all">All languages</option></select>
   <select id="fdecade"><option value="all">All decades</option></select>
   <select id="fwatch">
     <option value="all">All films</option>
@@ -149,11 +176,18 @@
   </select>
   <select id="fsort">
     <option value="rank">Sort: watch first</option>
-    <option value="spine">Sort: spine #</option>
-    <option value="year">Sort: year</option>
+    <option value="imdb">Sort: IMDb rating</option>
+    <option value="rt">Sort: Rotten Tomatoes</option>
+    <option value="metacritic">Sort: Metacritic</option>
+    <option value="year">Sort: newest</option>
+    <option value="year_old">Sort: oldest</option>
     <option value="runtime">Sort: shortest</option>
+    <option value="spine">Sort: spine #</option>
     <option value="title">Sort: title</option>
   </select>
+</div>
+<div class="bar" id="activebar" style="display:none">
+  <span id="activechip" class="afilter"></span>
 </div>
 <div class="bar">
   <button id="vtoggle">🖼 Poster view</button>
@@ -169,14 +203,15 @@
 
 <div id="overlay"><div id="modal"></div></div>
 <footer>
-  Data: criterion.com · IMDb datasets · Wikipedia · TMDB — progress is stored in this browser; use Backup to keep a copy.<br>
-  This product uses the TMDB API but is not endorsed or certified by TMDB.
+  Data: criterion.com · IMDb datasets · Wikipedia · TMDB · JustWatch — progress is stored in this browser; use Backup to keep a copy.<br>
+  This product uses the TMDB API but is not endorsed or certified by TMDB. Streaming availability by JustWatch.
 </footer>
 
 <script>
 const LS_KEY = "criterion-tracker-v1";
 let films = [], state = {}, byRank = {}, gridView = false;
 let prefLang = localStorage.getItem("ct-lang") || "en";
+let person = null;  // active {type:"director"|"actor", name} filter
 
 const load = () => {
   try { state = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { state = {}; }
@@ -205,16 +240,47 @@ fetch("films.json").then(r => r.json()).then(data => {
   decades.forEach(d => fdecade.insertAdjacentHTML("beforeend", `<option value="${d}">${d}s</option>`));
   const genres = [...new Set(films.flatMap(f => f.genres || []))].sort();
   genres.forEach(g => fgenre.insertAdjacentHTML("beforeend", `<option>${g}</option>`));
+  const countries = [...new Set(films.map(f => f.country).filter(Boolean))].sort();
+  countries.forEach(c => fcountry.insertAdjacentHTML("beforeend", `<option>${esc(c)}</option>`));
+  const langs = [...new Set(films.map(f => f.language).filter(Boolean))].sort();
+  langs.forEach(l => flang.insertAdjacentHTML("beforeend", `<option>${esc(l)}</option>`));
   load(); render(); updateProgress();
 });
+
+// clicking a director/actor name filters the whole list to that person
+function setPerson(type, name) {
+  person = { type, name };
+  const chip = document.getElementById("activechip");
+  chip.innerHTML = `${type === "director" ? "Director" : "Actor"}: <b>${esc(name)}</b> <span class="x" onclick="clearPerson()">✕</span>`;
+  document.getElementById("activebar").style.display = "flex";
+  closeModal();
+  render();
+  window.scrollTo(0, 0);
+}
+function clearPerson() {
+  person = null;
+  document.getElementById("activebar").style.display = "none";
+  render();
+}
 
 function filtered() {
   const q = document.getElementById("q").value.trim().toLowerCase();
   const fg = fgenre.value, fd = fdecade.value, fw = fwatch.value;
+  const fc = fcountry.value, fl = flang.value;
   let out = films.filter(f => {
     const s = st(f);
-    if (q && !(f.title + " " + f.director + " " + f.country).toLowerCase().includes(q)) return false;
+    if (q) {
+      const hay = (f.title + " " + f.director + " " + f.country + " " +
+                   (f.language || "") + " " + (f.cast || []).join(" ")).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    if (person) {
+      if (person.type === "director" && f.director !== person.name) return false;
+      if (person.type === "actor" && !(f.cast || []).includes(person.name)) return false;
+    }
     if (fg !== "all" && !(f.genres || []).includes(fg)) return false;
+    if (fc !== "all" && f.country !== fc) return false;
+    if (fl !== "all" && f.language !== fl) return false;
     if (fd !== "all" && (!f.year || Math.floor(f.year / 10) * 10 !== +fd)) return false;
     if (fw === "watched" && !s.watched) return false;
     if (fw === "unwatched" && s.watched) return false;
@@ -222,8 +288,13 @@ function filtered() {
     return true;
   });
   const key = fsort.value;
+  const num = (v, lo) => v == null ? (lo ? -1 : 1e9) : v;
   if (key === "spine") out.sort((a, b) => (a.spine ?? 1e9) - (b.spine ?? 1e9));
-  else if (key === "year") out.sort((a, b) => (a.year ?? 3000) - (b.year ?? 3000));
+  else if (key === "imdb") out.sort((a, b) => num(b.imdb_rating, 1) - num(a.imdb_rating, 1));
+  else if (key === "rt") out.sort((a, b) => num(b.rt, 1) - num(a.rt, 1));
+  else if (key === "metacritic") out.sort((a, b) => num(b.metacritic, 1) - num(a.metacritic, 1));
+  else if (key === "year") out.sort((a, b) => (b.year ?? -1) - (a.year ?? -1));
+  else if (key === "year_old") out.sort((a, b) => (a.year ?? 3000) - (b.year ?? 3000));
   else if (key === "runtime") out.sort((a, b) => (a.runtime ?? 1e9) - (b.runtime ?? 1e9));
   else if (key === "title") out.sort((a, b) => a.title.localeCompare(b.title));
   else out.sort((a, b) => a.rank - b.rank);
@@ -250,7 +321,7 @@ function rowHtml(f, s) {
     <div class="check" onclick="event.stopPropagation(); toggleWatched(${f.rank})">✓</div>
     <div class="info">
       <div class="title">${esc(f.title)} <span class="meta">(${f.year || "?"})</span></div>
-      <div class="meta">${esc(f.director)} · ${esc(f.country)}${rt}${f.spine != null ? " · #" + f.spine : ""}${my}</div>
+      <div class="meta"><span class="link-like" onclick="event.stopPropagation(); setPerson('director','${esc((f.director||'').replace(/'/g,"\\'"))}')">${esc(f.director)}</span> · ${esc(f.country)}${f.language ? " · " + esc(f.language) : ""}${rt}${f.spine != null ? " · #" + f.spine : ""}${my}</div>
     </div>
     <div class="imdb">${imdb}</div>
     <div class="gcap"><span class="title">${esc(f.title)}</span><span class="meta">${f.year || ""}${f.imdb_rating ? " · " + f.imdb_rating.toFixed(1) + "★" : ""}</span></div>
@@ -284,6 +355,29 @@ function setLang(el, l) {
   if (ar) ar.style.display = l === "ar" ? "block" : "none";
 }
 
+function playTrailer(rank, ytKey) {
+  const box = document.getElementById("trailer-" + rank);
+  box.innerHTML = `<div class="trwrap"><iframe src="https://www.youtube.com/embed/${ytKey}?autoplay=1"
+    allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy"></iframe></div>`;
+}
+
+// Qatar "where to watch" — providers from TMDB/JustWatch, with a search fallback
+function watchBlock(f) {
+  const jw = "https://www.justwatch.com/qa/search?q=" + encodeURIComponent(f.title);
+  const logo = lp => "https://image.tmdb.org/t/p/w45" + lp;
+  const chip = p => `<span class="wp" title="${esc(p.name)}">${p.logo
+    ? `<img src="${logo(p.logo)}" alt="${esc(p.name)}" loading="lazy">` : esc(p.name)}</span>`;
+  const row = (label, arr) => arr && arr.length
+    ? `<div class="wprow"><span class="wplabel">${label}</span>${arr.map(chip).join("")}</div>` : "";
+  const p = f.providers_qa;
+  const body = p
+    ? `${row("Stream", p.flatrate)}${row("Rent", p.rent)}${row("Buy", p.buy)}
+       <a class="jw" href="${esc(p.link || jw)}" target="_blank">Details on JustWatch ↗</a>`
+    : `<span class="wpnone">Not currently streaming in Qatar.</span>
+       <a class="jw" href="${jw}" target="_blank">Search JustWatch ↗</a>`;
+  return `<div class="watch"><h3>Where to watch · Qatar</h3>${body}</div>`;
+}
+
 function openFilm(rank) {
   const f = byRank[rank], s = st(f);
   const recs = (f.similar || []).map(r => byRank[r]).filter(Boolean);
@@ -293,13 +387,15 @@ function openFilm(rank) {
       <img class="mposter" src="${poster(f, "medium")}" alt="">
       <div style="min-width:0">
         <div class="mtitle">${esc(f.title)}</div>
-        <div class="mmeta">${f.year || "?"} · ${esc(f.director)} · ${esc(f.country)}
+        <div class="mmeta">${f.year || "?"} · <span class="link-like" onclick="setPerson('director','${esc((f.director||'').replace(/'/g,"\\'"))}')">${esc(f.director)}</span> · ${esc(f.country)}${f.language ? " · " + esc(f.language) : ""}
           ${f.runtime ? " · " + hhmm(f.runtime) : ""}${f.spine != null ? " · spine #" + f.spine : ""}<br>
           Watch-first rank <b style="color:var(--accent)">#${f.rank}</b>
           ${f.imdb_rating ? ` · IMDb ${f.imdb_rating.toFixed(1)}★ (${f.imdb_votes.toLocaleString()})` : ""}
           ${f.rt != null ? ` · 🍅 ${f.rt}%` : ""}${f.metacritic != null ? ` · Ⓜ ${f.metacritic}` : ""}</div>
         <div class="chips">${(f.genres || []).map(g => `<span class="chip" onclick="filterGenre('${esc(g)}')">${esc(g)}</span>`).join("")}</div>
         ${summaryBlock(f)}
+        ${(f.cast && f.cast.length) ? `<div class="cast">Cast: ${f.cast.map(a =>
+          `<span class="actor" onclick="setPerson('actor','${esc(a.replace(/'/g,"\\'"))}')">${esc(a)}</span>`).join(", ")}</div>` : ""}
       </div>
     </div>
     <div class="mbody">
@@ -311,6 +407,10 @@ function openFilm(rank) {
         ${f.tmdb_id ? `<a href="https://www.themoviedb.org/movie/${f.tmdb_id}" target="_blank">TMDB ↗</a>` : ""}
         ${f.wiki_ar ? `<a href="${esc(f.wiki_ar)}" target="_blank">ويكيبيديا ↗</a>` : ""}
       </div>
+      ${f.trailer ? `<div class="trailer" id="trailer-${rank}">
+        <button class="trbtn" onclick="playTrailer(${rank},'${esc(f.trailer)}')">▶ Watch trailer</button>
+      </div>` : ""}
+      ${watchBlock(f)}
       <div class="stars">${[1, 2, 3, 4, 5].map(i =>
         `<span class="s ${s.rating >= i ? "on" : ""}" onclick="rate(${rank}, ${i})">★</span>`).join("")}
         <span class="clear" onclick="rate(${rank}, 0)">clear</span></div>
@@ -354,7 +454,7 @@ function updateProgress() {
   document.getElementById("pfill").style.width = films.length ? (100 * watched / films.length) + "%" : 0;
 }
 
-["q", "fgenre", "fdecade", "fwatch", "fsort"].forEach(id =>
+["q", "fgenre", "fcountry", "flang", "fdecade", "fwatch", "fsort"].forEach(id =>
   document.getElementById(id).addEventListener(id === "q" ? "input" : "change", render));
 
 document.getElementById("vtoggle").onclick = function () {
