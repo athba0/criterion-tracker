@@ -596,14 +596,34 @@ function showReviews(rank) {
     if (!box) return;
     const revs = all[f.title + "|" + f.year] || [];
     if (!revs.length) return;
-    box.innerHTML = `<h3>What people say</h3>` + revs.map(r => `
-      <div class="review">
+    const anyAr = revs.some(r => r.content_ar);
+    const showAr = anyAr && prefLang === "ar";
+    const toggle = anyAr ? `<span class="langtog" style="float:right;text-transform:none">
+        <a data-l="en" class="${showAr ? "" : "on"}" onclick="setReviewLang(${rank},'en')">EN</a>
+        <a data-l="ar" class="${showAr ? "on" : ""}" onclick="setReviewLang(${rank},'ar')">ع</a></span>` : "";
+    box.innerHTML = `<h3 style="overflow:hidden">What people say${toggle}</h3>` + revs.map(r => {
+      const en = `<div class="rbody rb-en" style="display:${showAr ? "none" : "block"}">${esc(r.content)}</div>`;
+      const ar = r.content_ar
+        ? `<div class="rbody rb-ar sum-ar" style="display:${showAr ? "block" : "none"}">${esc(r.content_ar)}</div>` : "";
+      return `<div class="review">
         <div class="rhead"><b>${esc(r.author)}</b>${r.rating ? " · " + r.rating + "/10" : ""}
           ${r.url ? ` · <a href="${esc(r.url)}" target="_blank" style="color:var(--accent)">source ↗</a>` : ""}</div>
-        <div class="rbody">${esc(r.content)}</div>
-        ${r.content.length > 320 ? `<span class="more" onclick="this.previousElementSibling.classList.toggle('open'); this.textContent = this.textContent==='Show more'?'Show less':'Show more'">Show more</span>` : ""}
-      </div>`).join("");
+        ${en}${ar}
+        ${r.content.length > 320 ? `<span class="more" onclick="toggleMore(this)">Show more</span>` : ""}
+      </div>`;
+    }).join("");
   });
+}
+function setReviewLang(rank, l) {
+  prefLang = l; localStorage.setItem("ct-lang", l);
+  const box = document.getElementById("reviews-" + rank);
+  box.querySelectorAll(".langtog a").forEach(a => a.classList.toggle("on", a.dataset.l === l));
+  box.querySelectorAll(".rb-en").forEach(e => e.style.display = l === "en" ? "block" : "none");
+  box.querySelectorAll(".rb-ar").forEach(e => e.style.display = l === "ar" ? "block" : "none");
+}
+function toggleMore(el) {
+  el.closest(".review").querySelectorAll(".rbody").forEach(b => b.classList.toggle("open"));
+  el.textContent = el.textContent === "Show more" ? "Show less" : "Show more";
 }
 function closeModal() { document.getElementById("overlay").classList.remove("show"); render(); }
 document.getElementById("overlay").addEventListener("click", e => { if (e.target.id === "overlay") closeModal(); });
