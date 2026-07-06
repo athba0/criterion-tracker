@@ -34,16 +34,17 @@ summaries = load("summaries.json")     # EN + AR from Wikipedia
 ar = load("summaries_ar.json")         # AR from ar.wikipedia / machine translation
 tmdb = load("tmdb.json")               # EN + AR overviews from TMDB
 omdb = load("omdb.json")               # Rotten Tomatoes + Metacritic scores
+deepl = load("summaries_ar_deepl.json")  # DeepL Arabic translations of the plot
 
-# Source priority — English: Wikipedia intro (encyclopedic) then TMDB overview.
-# Arabic: TMDB official overview, then ar.wikipedia intro, then machine translation.
+# Source priority — English plot: full TMDB overview, else Wikipedia intro.
+# Arabic: TMDB official overview, then DeepL translation, then older MT / ar.wiki.
 for f in films:
     k = f"{f['title']}|{f['year']}"
     s = summaries.get(k) or {}
     a = ar.get(k) or {}
     t = tmdb.get(k) or {}
 
-    f["summary"] = s.get("summary") or t.get("overview_en")
+    f["summary"] = t.get("overview_en") or s.get("summary")
     f["wiki"] = s.get("wiki")
     f["tmdb_id"] = t.get("tmdb_id")
 
@@ -58,6 +59,8 @@ for f in films:
 
     if t.get("overview_ar"):
         f["summary_ar"], f["ar_src"] = t["overview_ar"], "tmdb"
+    elif (deepl.get(k) or {}).get("summary_ar"):
+        f["summary_ar"], f["ar_src"] = deepl[k]["summary_ar"], "deepl"
     elif a.get("summary_ar"):
         f["summary_ar"], f["ar_src"] = a["summary_ar"], a.get("src")
     else:
